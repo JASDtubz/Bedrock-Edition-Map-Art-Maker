@@ -24,7 +24,7 @@ public class Main extends Application
 
     public static MapColor[][] mc = new MapColor[128][128];
 
-    public static void main(String[] args) { launch(args); }
+    public static void main(String[] args) { launch(); }
 
     @Override
     public void start(Stage s)
@@ -51,12 +51,12 @@ public class Main extends Application
         s.setScene(this.scene);
         s.show();
 
-        this.b.setOnAction(e -> init(false));
-        this.bb.setOnAction(e -> init(true));
-        this.b_.setOnAction(e -> make());
+        this.b.setOnAction(e -> this.init(false, false));
+        this.bb.setOnAction(e -> this.init(true, false));
+        this.b_.setOnAction(e -> this.make());
     }
 
-    public void init(boolean b)
+    public void init(boolean b, boolean b_)
     {
         String s;
 
@@ -64,7 +64,7 @@ public class Main extends Application
         catch (Exception ignored) { return; }
 
         Init i = new Init();
-        i.init(s, b);
+        i.init(s, b, b_);
     }
 
     public void make()
