@@ -21,7 +21,6 @@ public class Main extends Application
     static Label l_;
     VBox vb;
     Scene scene;
-    Stage stage;
 
     public static MapColor[][] mc = new MapColor[128][128];
 
@@ -31,8 +30,6 @@ public class Main extends Application
     public void start(Stage s)
     {
         Init i = new Init();
-
-        this.stage = s;
 
         this.l = new Label("Location Of Image");
         this.tf = new TextField();
@@ -49,10 +46,10 @@ public class Main extends Application
 
         this.scene = new Scene(this.vb, 800, 600);
 
-        this.stage.getIcons().add(new Image("file:120201016_114241(1).jpg"));
-        this.stage.setTitle("Bedrock Map Art");
-        this.stage.setScene(this.scene);
-        this.stage.show();
+        s.getIcons().add(new Image("file:120201016_114241(1).jpg"));
+        s.setTitle("Bedrock Map Art");
+        s.setScene(this.scene);
+        s.show();
 
         this.b.setOnAction(e -> init(false));
         this.bb.setOnAction(e -> init(true));
