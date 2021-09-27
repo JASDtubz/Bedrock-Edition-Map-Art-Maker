@@ -93,6 +93,7 @@ public class MapColor
         for (var x = 0; x < mc.length; x++)
         {
             i = (Math.abs(r - mc[x].r) + Math.abs(g - mc[x].g) + Math.abs(b - mc[x].b)) / 3;
+            
             if (i < i_)
             {
                 i_ = i;
@@ -225,6 +226,7 @@ public class MapColor
         for (var x = 0; x < mc.length; x++)
         {
             i = (Math.abs(r - mc[x].r) + Math.abs(g - mc[x].g) + Math.abs(b - mc[x].b)) / 3;
+            
             if (i < i_)
             {
                 i_ = i;
