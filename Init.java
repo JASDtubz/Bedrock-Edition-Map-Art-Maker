@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class Init
 {
-    public void init(String s, boolean b0, boolean b1)
+    public void init(String s, boolean b0)
     {
         Main m = new Main();
 
@@ -27,7 +27,6 @@ public class Init
         }
 
         assert bi != null;
-
         try
         {
             h = bi.getHeight();
@@ -94,11 +93,9 @@ public class Init
 
                 MapColor mc;
 
-                if (b0) { mc = new MapColor(ra, ga, ba, true); }
-                else { mc = new MapColor(ra, ga, ba); }
+                mc = new MapColor(ra, ga, ba, b0);
 
                 m.assign(x_, y_, mc);
-
                 System.out.println(x_ + " " + y_ + " " + mc.name);
             }
         }
