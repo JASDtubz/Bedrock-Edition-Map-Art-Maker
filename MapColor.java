@@ -84,7 +84,7 @@ public class MapColor
         final MapColor stone = new MapColor("Stone", 95, 95, 95);
         final MapColor scandium = new MapColor("Scandium", 111, 111, 111);
         final MapColor stoneBricks = new MapColor("Stone Bricks", 139, 142, 156);
-        final MapColor basalt = new MapColor("Basalt", 78, 78, 78);
+        //final MapColor basalt = new MapColor("Basalt", 78, 78, 78);
         final MapColor deepslate = new MapColor("Deepslate", 85, 85, 85);
         final MapColor white = new MapColor("White / Snow", 217, 217, 217);
         final MapColor quartz = new MapColor("Quartz", 217, 214, 209);
@@ -119,7 +119,7 @@ public class MapColor
         final MapColor leaves0 = new MapColor(leaves.name + "-", 62, 91, 24);
         final MapColor hydrogen0 = new MapColor(hydrogen.name + "-", 121, 176, 67);
         final MapColor slime0 = new MapColor(slime.name + "-", 126, 176, 55);
-        //TODO dripleaf0
+        final MapColor dripleaf0 = new MapColor(dripleaf.name + "-", 0, 123, 0);
         final MapColor lightBlue0 = new MapColor(lightBlue.name + "-", 101, 151, 213);
         final MapColor cyan0 = new MapColor(cyan.name + "-", 75, 126, 151);
         final MapColor blue0 = new MapColor(blue.name + "-", 50, 75, 176);
@@ -135,6 +135,27 @@ public class MapColor
         final MapColor purple0 = new MapColor(purple.name + "-", 126, 62, 176);
         final MapColor helium0 = new MapColor(helium.name + "-", 204, 123, 249);
         final MapColor actinium0 = new MapColor(actinium.name + "-", 126, 75, 202);
+        final MapColor black0 = new MapColor(black.name + "-", 25, 25, 25);
+        final MapColor sculkSensor0 = new MapColor(sculkSensor.name + "-", 13, 18, 23);
+        final MapColor gray0 = new MapColor(gray.name + "-", 75, 75, 75);
+        final MapColor lightGray0 = new MapColor(lightGray.name + "-", 151, 151, 151);
+        final MapColor iron0 = new MapColor(iron.name + "-", 165, 165, 165);
+        final MapColor stone0 = new MapColor(stone.name + "-", 111, 111, 111);
+        final MapColor scandium0 = new MapColor(scandium.name + "-", 128, 128, 128);
+        final MapColor stoneBricks0 = new MapColor(stoneBricks.name + "-", 162, 166, 182);
+        final MapColor deepslate0 = new MapColor(deepslate.name + "-", 99, 99, 99);
+        final MapColor white0 = new MapColor(white.name + "-", 252, 252, 252);
+        final MapColor quartz0 = new MapColor(quartz.name + "-", 252, 249, 242);
+        final MapColor cobweb0 = new MapColor(cobweb.name + "-", 197, 197, 197);
+        final MapColor calcite0 = new MapColor(calcite.name + "-", 207, 175, 159);
+        final MapColor brown0 = new MapColor(brown.name + "-", 101, 75, 50);
+        final MapColor planks0 = new MapColor(planks.name + "-", 141, 118, 71);
+        final MapColor dirt0 = new MapColor(dirt.name + "-", 149, 108, 76);
+        final MapColor aluminum0 = new MapColor(aluminum.name + "-", 176, 168, 138);
+        final MapColor exposedCopper0 = new MapColor(exposedCopper.name + "-", 133, 106, 97);
+        final MapColor rawIron0 = new MapColor(rawIron.name + "-", 213, 173, 145);
+        final MapColor tuff0 = new MapColor(tuff.name + "-", 56, 41, 35);
+        final MapColor dripstone0 = new MapColor(dripstone.name + "-", 75, 49, 35);
 
         final MapColor fire1 = new MapColor(fire.name + "+", 178, 0, 0);
         final MapColor red1 = new MapColor(red.name + "+", 107, 36, 36);
@@ -156,7 +177,7 @@ public class MapColor
         final MapColor leaves1 = new MapColor(leaves.name + "+", 44, 63, 17);
         final MapColor hydrogen1 = new MapColor(hydrogen.name + "+", 85, 125, 47);
         final MapColor slime1 = new MapColor(slime.name + "+", 88, 124, 39);
-        //TODO dripleaf1
+        final MapColor dripleaf1 = new MapColor(dripleaf.name + "+", 0, 86, 0);
         final MapColor lightBlue1 = new MapColor(lightBlue.name + "+", 71, 107, 150);
         final MapColor cyan1 = new MapColor(cyan.name + "+", 52, 88, 107);
         final MapColor blue1 = new MapColor(blue.name + "+", 36, 52, 124);
@@ -172,6 +193,27 @@ public class MapColor
         final MapColor purple1 = new MapColor(purple.name + "+", 88, 43, 124);
         final MapColor helium1 = new MapColor(helium.name + "+", 143, 87, 176);
         final MapColor actinium1 = new MapColor(actinium.name + "+", 89, 53, 142);
+        final MapColor black1 = new MapColor(black.name + "+", 17, 17, 17);
+        final MapColor sculkSensor1 = new MapColor(sculkSensor.name + "+", 9, 12, 16);
+        final MapColor gray1 = new MapColor(gray.name + "+", 52, 52, 52);
+        final MapColor lightGray1 = new MapColor(lightGray.name + "+", 107, 107, 107);
+        final MapColor iron1 = new MapColor(iron.name + "+", 116, 116, 116);
+        final MapColor stone1 = new MapColor(stone.name + "+", 78, 78, 78);
+        final MapColor scandium1 = new MapColor(scandium.name + "+", 90, 90, 90);
+        final MapColor stoneBricks1 = new MapColor(stoneBricks.name + "+", 114, 117, 127);
+        final MapColor deepslate1 = new MapColor(deepslate.name + "+", 69, 69, 69);
+        final MapColor white1 = new MapColor(white.name + "+", 178, 178, 178);
+        final MapColor quartz1 = new MapColor(quartz.name + "+", 178, 175, 170);
+        final MapColor cobweb1 = new MapColor(cobweb.name + "+", 138, 138, 138);
+        final MapColor calcite1 = new MapColor(calcite.name + "+", 145, 123, 112);
+        final MapColor brown1 = new MapColor(brown.name + "+", 71, 52, 36);
+        final MapColor planks1 = new MapColor(planks.name + "+", 99, 83, 49);
+        final MapColor dirt1 = new MapColor(dirt.name + "+", 105, 75, 53);
+        final MapColor aluminum1 = new MapColor(aluminum.name + "+", 125, 119, 98);
+        final MapColor exposedCopper1 = new MapColor(exposedCopper.name + "+", 94, 74, 68);
+        final MapColor rawIron1 = new MapColor(rawIron.name + "+", 150, 122, 102);
+        final MapColor tuff1 = new MapColor(tuff.name + "+", 40, 28, 24);
+        final MapColor dripstone1 = new MapColor(dripstone.name + "+", 52, 35, 24);
 
         if (!bool)
         {
@@ -181,7 +223,7 @@ public class MapColor
                 gold, sand, lime, green, grass, emerald, leaves, hydrogen, slime, dripleaf, lightBlue, cyan, blue,
                 darkPrismarine, lapisLazuli, warpedWart, warpedNylium, ice, lithium, beryllium, weatheredCopper,
                 magenta, purple, helium, actinium, black, unknown, sculkSensor, gray, lightGray, iron, stone, scandium,
-                stoneBricks, basalt, deepslate, white, quartz, cobweb, calcite, brown, planks, dirt, aluminum,
+                stoneBricks, /*basalt,*/ deepslate, white, quartz, cobweb, calcite, brown, planks, dirt, aluminum,
                 exposedCopper, rawIron, tuff, dripstone
             };
         }
@@ -192,16 +234,20 @@ public class MapColor
                 fire0, fire1, red0, red1, netherrack0, netherrack1, pink0, pink1, crimsonNylium0, crimsonNylium1,
                 boron0, boron1, lanthanum0, lanthanum1, crimsonPlanks0, crimsonPlanks1, orange0, orange1, fluorine0,
                 fluorine1, yellow0, yellow1, gold0, gold1, sand0, sand1, lime0, lime1, green0, green1, grass0, grass1,
-                emerald0, emerald1, leaves0, leaves1, hydrogen0, hydrogen1, slime0, slime1, /*TODO dripleaf*/
+                emerald0, emerald1, leaves0, leaves1, hydrogen0, hydrogen1, slime0, slime1, dripleaf0, dripleaf1,
                 lightBlue0, lightBlue1, cyan0, cyan1, blue0, blue1, darkPrismarine0, darkPrismarine1, lapisLazuli0,
                 lapisLazuli1, warpedWart0, warpedWart1, warpedNylium0, warpedNylium1, ice0, ice1, lithium0, lithium1,
                 beryllium0, beryllium1, weatheredCopper0, weatheredCopper1, magenta0, magenta1, purple0, purple1,
-                helium0, helium1, actinium0, actinium1,
+                helium0, helium1, actinium0, actinium1, black0, black1, sculkSensor0, sculkSensor1, gray0, gray1,
+                lightGray0, lightGray1, iron0, iron1, stone0, stone1, scandium0, scandium1, stoneBricks0, stoneBricks1,
+                deepslate0, deepslate1, white0, white1, quartz0, quartz1, cobweb0, cobweb1, calcite0, calcite1, brown0,
+                brown1, planks0, planks1, dirt0, dirt1, aluminum0, aluminum1, exposedCopper0, exposedCopper1, rawIron0,
+                rawIron1, tuff0, tuff1, dripstone0, dripstone1,
                 fire, red, netherrack, pink, crimsonNylium, boron, lanthanum, crimsonPlanks, orange, fluorine, yellow,
                 gold, sand, lime, green, grass, emerald, leaves, hydrogen, slime, dripleaf, lightBlue, cyan, blue,
                 darkPrismarine, lapisLazuli, warpedWart, warpedNylium, ice, lithium, beryllium, weatheredCopper,
                 magenta, purple, helium, actinium, black, unknown, sculkSensor, gray, lightGray, iron, stone, scandium,
-                stoneBricks, basalt, deepslate, white, quartz, cobweb, calcite, brown, planks, dirt, aluminum,
+                stoneBricks, /*basalt,*/ deepslate, white, quartz, cobweb, calcite, brown, planks, dirt, aluminum,
                 exposedCopper, rawIron, tuff, dripstone
             };
         }
