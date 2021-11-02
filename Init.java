@@ -13,8 +13,8 @@ public class Init
         Main m = new Main();
 
         int h, w;
-        double d = 0;
-        double d_ = 0;
+        double d;
+        double d_;
 
         File f = new File(s);
         BufferedImage bi;
@@ -37,14 +37,14 @@ public class Init
         if (h >= 128) { d = (double) h / 128; }
         else
         {
-            System.out.println("Image height to small.");
+            m.l_.setText("Image height to small.");
             return;
         }
 
         if (w >= 128) { d_ = (double) w / 128; }
         else
         {
-            System.out.println("Image width to small");
+            m.l_.setText("Image width to small");
             return;
         }
 
