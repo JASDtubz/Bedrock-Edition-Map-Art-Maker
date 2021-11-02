@@ -242,13 +242,12 @@ public class MapColor
                 lightGray0, lightGray1, iron0, iron1, stone0, stone1, scandium0, scandium1, stoneBricks0, stoneBricks1,
                 deepslate0, deepslate1, white0, white1, quartz0, quartz1, cobweb0, cobweb1, calcite0, calcite1, brown0,
                 brown1, planks0, planks1, dirt0, dirt1, aluminum0, aluminum1, exposedCopper0, exposedCopper1, rawIron0,
-                rawIron1, tuff0, tuff1, dripstone0, dripstone1,
-                fire, red, netherrack, pink, crimsonNylium, boron, lanthanum, crimsonPlanks, orange, fluorine, yellow,
-                gold, sand, lime, green, grass, emerald, leaves, hydrogen, slime, dripleaf, lightBlue, cyan, blue,
-                darkPrismarine, lapisLazuli, warpedWart, warpedNylium, ice, lithium, beryllium, weatheredCopper,
-                magenta, purple, helium, actinium, black, unknown, sculkSensor, gray, lightGray, iron, stone, scandium,
-                stoneBricks, /*basalt,*/ deepslate, white, quartz, cobweb, calcite, brown, planks, dirt, aluminum,
-                exposedCopper, rawIron, tuff, dripstone
+                rawIron1, tuff0, tuff1, dripstone0, dripstone1, fire, red, netherrack, pink, crimsonNylium, boron,
+                lanthanum, crimsonPlanks, orange, fluorine, yellow, gold, sand, lime, green, grass, emerald, leaves,
+                hydrogen, slime, dripleaf, lightBlue, cyan, blue, darkPrismarine, lapisLazuli, warpedWart, warpedNylium,
+                ice, lithium, beryllium, weatheredCopper, magenta, purple, helium, actinium, black, unknown,
+                sculkSensor, gray, lightGray, iron, stone, scandium, stoneBricks, /*basalt,*/ deepslate, white, quartz,
+                cobweb, calcite, brown, planks, dirt, aluminum, exposedCopper, rawIron, tuff, dripstone
             };
         }
     }
