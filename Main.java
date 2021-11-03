@@ -24,7 +24,7 @@ public class Main extends Application
     Button b0, b1, b_;
     public Canvas c = new Canvas(256, 256);
     Canvas c0 = new Canvas(256, 256);
-    public Label l_ = new Label();
+    static Label l_ = new Label();
     VBox vb;
     Scene scene;
     Stage stage;
@@ -41,7 +41,7 @@ public class Main extends Application
         this.b0 = new Button("Start");
         this.b1 = new Button("Start 2");
         this.b_ = new Button("Make Map");
-        this.l_ = new Label("0%");
+        Main.l_ = new Label("0%");
 
         Button[][] bb = new Button[8][8];
         VBox[] vbv = new VBox[8];
@@ -63,8 +63,9 @@ public class Main extends Application
                 int i_ = i;
                 int j_ = j;
 
-                bb[i][j] = new Button("  ");
+                bb[i][j] = new Button("   ");
                 bb[i][j].setOnAction(e -> this.chunk(i_, j_));
+                bb[i][j].setTooltip(new Tooltip(i + ", " + j));
                 vbv[i].getChildren().add(bb[i][j]);
             }
         }
@@ -74,7 +75,7 @@ public class Main extends Application
         canvas.getChildren().addAll(this.c, square, this.c0);
 
         this.vb = new VBox(5);
-        this.vb.getChildren().addAll(this.l, this.tf, hb, canvas, this.l_);
+        this.vb.getChildren().addAll(this.l, this.tf, hb, canvas, Main.l_);
 
         this.scene = new Scene(this.vb, 800, 600);
 
@@ -114,10 +115,10 @@ public class Main extends Application
         }
     }
 
-    public void assign(int x, int y, MapColor mc)
+    public static void assign(int x, int y, MapColor mc)
     {
         Main.mc[x][y] = mc;
-        this.l_.setText((double) x / 127 * 100 + "%");
+        Main.l_.setText(x / 127.0 * 100 + "%");
     }
 
     public void chunk(int x, int y)
@@ -146,8 +147,6 @@ public class Main extends Application
                 FileWriter fw = new FileWriter(f);
 
                 if (f.createNewFile()) { fw.write(""); }
-
-                System.out.println(f.getAbsolutePath());
 
                 fw.write(sb.toString());
                 fw.close();
