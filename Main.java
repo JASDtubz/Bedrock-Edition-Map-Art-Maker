@@ -26,7 +26,6 @@ public class Main extends Application
     Canvas c0 = new Canvas(256, 256);
     static Label l_ = new Label();
     VBox vb;
-    Scene scene;
 
     public static MapColor[][] mc = new MapColor[128][128];
 
@@ -76,10 +75,8 @@ public class Main extends Application
         this.vb = new VBox(5);
         this.vb.getChildren().addAll(this.l, this.tf, hb, canvas, Main.l_);
 
-        this.scene = new Scene(this.vb, 800, 600);
-
         s.setTitle("Bedrock Map Art");
-        s.setScene(this.scene);
+        s.setScene(new Scene(this.vb, 800, 600));
         s.show();
 
         this.b0.setOnAction(e -> this.init(false));
