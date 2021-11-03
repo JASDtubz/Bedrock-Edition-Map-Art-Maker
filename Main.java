@@ -95,6 +95,8 @@ public class Main extends Application
 
         try { s = this.tf.getText(); }
         catch (Exception ignored) { return; }
+        
+        Main.l_.setText("0%");
 
         Init i = new Init();
         i.init(s, b);
