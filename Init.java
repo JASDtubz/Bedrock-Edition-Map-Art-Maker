@@ -91,9 +91,7 @@ public class Init
                 int x_ = (int) Math.ceil(x / d_);
                 int y_ = (int) Math.ceil(y / d);
 
-                MapColor mc;
-
-                mc = new MapColor(ra, ga, ba, b0);
+                MapColor mc = new MapColor(ra, ga, ba, b0);
 
                 m.assign(x_, y_, mc);
                 System.out.println(x_ + " " + y_ + " " + mc.name);
