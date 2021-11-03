@@ -27,7 +27,6 @@ public class Main extends Application
     static Label l_ = new Label();
     VBox vb;
     Scene scene;
-    Stage stage;
 
     public static MapColor[][] mc = new MapColor[128][128];
 
@@ -79,10 +78,9 @@ public class Main extends Application
 
         this.scene = new Scene(this.vb, 800, 600);
 
-        this.stage = s;
-        this.stage.setTitle("Bedrock Map Art");
-        this.stage.setScene(this.scene);
-        this.stage.show();
+        s.setTitle("Bedrock Map Art");
+        s.setScene(this.scene);
+        s.show();
 
         this.b0.setOnAction(e -> this.init(false));
         this.b1.setOnAction(e -> this.init(true));
