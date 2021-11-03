@@ -94,7 +94,11 @@ public class Main extends Application
         String s;
 
         try { s = this.tf.getText(); }
-        catch (Exception ignored) { return; }
+        catch (Exception ignored)
+        {
+            Main.l_.setText("No Text Present");
+            return;
+        }
         
         Main.l_.setText("0%");
 
