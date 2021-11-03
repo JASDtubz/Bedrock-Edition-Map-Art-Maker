@@ -32,7 +32,11 @@ public class Init
             h = bi.getHeight();
             w = bi.getWidth();
         }
-        catch (Exception ignored) { return; }
+        catch (Exception ignored)
+        {
+            m.l_.setText("Cannot Get Dimensions");
+            return;
+        }
 
         if (h >= 128) { d = (double) h / 128; }
         else
