@@ -10,8 +10,6 @@ public class Init
 {
     public void init(String s, boolean b0)
     {
-        Main m = new Main();
-
         int h, w;
         double d;
         double d_;
@@ -22,7 +20,7 @@ public class Init
         try { bi = ImageIO.read(f); }
         catch (IOException ignored)
         {
-            m.l_.setText("Cannot Read File.");
+            Main.l_.setText("Cannot Read File.");
             return;
         }
 
@@ -34,21 +32,21 @@ public class Init
         }
         catch (Exception ignored)
         {
-            m.l_.setText("Cannot Get Dimensions");
+            Main.l_.setText("Cannot Get Dimensions");
             return;
         }
 
         if (h >= 128) { d = (double) h / 128; }
         else
         {
-            m.l_.setText("Image height to small.");
+            Main.l_.setText("Image height to small.");
             return;
         }
 
         if (w >= 128) { d_ = (double) w / 128; }
         else
         {
-            m.l_.setText("Image width to small");
+            Main.l_.setText("Image width to small");
             return;
         }
 
@@ -97,7 +95,7 @@ public class Init
 
                 MapColor mc = new MapColor(ra, ga, ba, b0);
 
-                m.assign(x_, y_, mc);
+                Main.assign(x_, y_, mc);
                 System.out.println(x_ + " " + y_ + " " + mc.name);
             }
         }
