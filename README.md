@@ -5,3 +5,10 @@ Run program using a javafx ide and then type the image location into the text bo
 
 ## Version 0
 ### November 6, 2021
+- Full version released.
+- Image link requires perfect syntax.
+- Impressionistic coloring not included.
+- Chunk buttons start at 0.
+- BlueJ version not perfect.
+  - Status label not working.
+  - Chunk text file not appearing consistently.
