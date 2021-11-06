@@ -94,7 +94,7 @@ public class Main extends Application
             Main.l_.setText("No Text Present");
             return;
         }
-        
+
         Main.l_.setText("0%");
 
         Init i = new Init();
