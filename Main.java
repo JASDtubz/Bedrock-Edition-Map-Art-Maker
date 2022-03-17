@@ -46,8 +46,8 @@ public class Main extends Application
         HBox square = new HBox();
         HBox canvas = new HBox(10);
 
-        this.b0.setTooltip(new Tooltip("This algorithm uses no stair technique and no impressionism dotting."));
-        this.b1.setTooltip(new Tooltip("This algorithm uses stair technique but no impressionism dotting."));
+        this.b0.setTooltip(new Tooltip("This algorithm uses no stair technique and no dithering."));
+        this.b1.setTooltip(new Tooltip("This algorithm uses stair technique but no dithering."));
 
         HBox hb = new HBox(5);
         hb.getChildren().addAll(this.b0, this.b1, this.b_);
