@@ -25,6 +25,7 @@ public class Init
         }
 
         assert bi != null;
+        
         try
         {
             h = bi.getHeight();
