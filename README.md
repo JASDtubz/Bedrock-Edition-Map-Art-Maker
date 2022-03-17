@@ -9,7 +9,7 @@ Join discord [link](https://discord.gg/MuHPVWFRsk) to suggest to me to add more 
 ### November 6, 2021
 - Full version released.
 - Image link requires perfect syntax.
-- Impressionistic coloring not included.
+- Dithering is not included.
 - Chunk buttons start at 0.
 - BlueJ version not perfect.
   - Status label not working.
