@@ -22,7 +22,7 @@ public class Main extends Application
     Button b0, b1, b_;
     public Canvas c = new Canvas(256, 256);
     Canvas c0 = new Canvas(256, 256);
-    Label l_ = new Label();
+    static Label l_ = new Label();
     VBox vb;
 
     public static MapColor[][] mc = new MapColor[128][128];
@@ -37,7 +37,9 @@ public class Main extends Application
         this.b0 = new Button("Start");
         this.b1 = new Button("Start 2");
         this.b_ = new Button("Make Map");
-        l_ = new Label("0%");
+        Button bx = new Button("Dither 1");
+        Button by = new Button("Dither 2");
+        Main.l_ = new Label("0%");
 
         Button[][] bb = new Button[8][8];
         VBox[] vbv = new VBox[8];
@@ -70,8 +72,11 @@ public class Main extends Application
 
         canvas.getChildren().addAll(this.c, square, this.c0);
 
+        Button button = new Button("Function");
+        button.setOnAction(q -> this.function());
+
         this.vb = new VBox(5);
-        this.vb.getChildren().addAll(this.l, this.tf, hb, canvas, l_);
+        this.vb.getChildren().addAll(this.l, this.tf, hb, canvas, Main.l_, button);
 
         s.setTitle("Bedrock Map Art");
         s.setScene(new Scene(this.vb, 800, 600));
@@ -80,6 +85,8 @@ public class Main extends Application
         this.b0.setOnAction(e -> this.init(false));
         this.b1.setOnAction(e -> this.init(true));
         this.b_.setOnAction(e -> this.make());
+        bx.setOnAction(e -> this.dither1());
+        by.setOnAction(e -> this.dither2());
     }
 
     public void init(boolean b)
@@ -89,11 +96,11 @@ public class Main extends Application
         try { s = this.tf.getText(); }
         catch (Exception ignored)
         {
-            l_.setText("No Text Present");
+            Main.l_.setText("No Text Present");
             return;
         }
 
-        l_.setText("0%");
+        Main.l_.setText("0%");
 
         Init i = new Init();
         i.init(s, b);
@@ -114,10 +121,10 @@ public class Main extends Application
         }
     }
 
-    void assign(int x, int y, MapColor mc)
+    public static void assign(int x, int y, MapColor mc)
     {
         Main.mc[x][y] = mc;
-        this.l_.setText(x / 127.0 * 100 + "%");
+        Main.l_.setText(x / 127.0 * 100 + "%");
     }
 
     public void chunk(int x, int y)
@@ -168,5 +175,179 @@ public class Main extends Application
                 gc.fillRect(0, i * 16, 256, 1);
             }
         }
+    }
+
+    void function()
+    {
+        StringBuilder sb = new StringBuilder();
+        StringBuilder sb2 = new StringBuilder();
+        int n = 0;
+
+        for (int i = -64; i < 320; i++)
+        {
+            sb.append("fill ~ " + i + " ~ ~-127 " + i + " ~-128 air\n");
+            n++;
+        }
+
+        for (int i = -127; i < 1; i++)
+        {
+            int z = 128;
+
+            for (int j = -127; j < 1; j++)
+            {
+                String s = Main.mc[i + 127][j + 127].name.contains("+") || Main.mc[i + 127][j + 127].name.contains("-")
+                    ? Main.mc[i + 127][j + 127].name.substring(0, Main.mc[i + 127][j + 127].name.length() - 1)
+                    : Main.mc[i + 127][j + 127].name;
+
+                if (j == -127)
+                {
+                    if (n < 10000)
+                    {
+                        sb.append("fill ~" + i + " 128 ~" + j + " ~" + i + " 128 ~" + j + " " + this.translate(s) + "\n");
+
+                        if (Main.mc[i + 127][j + 127].name.contains("+"))
+                        {
+                            sb.append("fill ~" + i + " 130 ~" + (j - 1) + " ~" + i + " 130 ~" + (j - 1) + " " + "bedrock\n");
+                        }
+                        else if (Main.mc[i + 127][j + 127].name.contains("-"))
+                        {
+                            sb.append("fill ~" + i + " 126 ~" + (j - 1) + " ~" + i + " 126 ~" + (j - 1) + " " + "bedrock\n");
+                        }
+                        else
+                        {
+                            sb.append("fill ~" + i + " 128 ~" + (j - 1) + " ~" + i + " 128 ~" + (j - 1) + " " + "bedrock\n");
+                        }
+                    }
+                    else
+                    {
+                        sb2.append("fill ~" + i + " 128 ~" + j + " ~" + i + " 128 ~" + j + " " + this.translate(s) + "\n");
+
+                        if (Main.mc[i + 127][j + 127].name.contains("+"))
+                        {
+                            sb2.append("fill ~" + i + " 130 ~" + (j - 1) + " ~" + i + " 130 ~" + (j - 1) + " " + "bedrock\n");
+                        }
+                        else if (Main.mc[i + 127][j + 127].name.contains("-"))
+                        {
+                            sb2.append("fill ~" + i + " 126 ~" + (j - 1) + " ~" + i + " 126 ~" + (j - 1) + " " + "bedrock\n");
+                        }
+                        else
+                        {
+                            sb2.append("fill ~" + i + " 128 ~" + (j - 1) + " ~" + i + " 128 ~" + (j - 1) + " " + "bedrock\n");
+                        }
+                    }
+
+                    n += 2;
+                }
+                else
+                {
+                    if (Main.mc[i + 127][j + 127].name.contains("+")) { z -= 2; }
+                    else if (Main.mc[i + 127][j + 127].name.contains("-")) { z += 2; }
+
+                    if (n < 10000)
+                    {
+                        sb.append("fill ~" + i + " " + z + " ~" + j + " ~" + i + " " + z + " ~" + j + " " + this.translate(s) + "\n");
+                    }
+                    else
+                    {
+                        sb2.append("fill ~" + i + " " + z + " ~" + j + " ~" + i + " " + z + " ~" + j + " " + this.translate(s) + "\n");
+                    }
+
+                    n++;
+                }
+            }
+        }
+
+        try
+        {
+            File f1 = new File("make1.mcfunction");
+            FileWriter fw1 = new FileWriter(f1);
+
+            if (f1.createNewFile()) { fw1.write(""); }
+
+            fw1.write(sb.toString());
+            fw1.close();
+
+            File f2 = new File("make2.mcfunction");
+            FileWriter fw2 = new FileWriter(f2);
+
+            if (f2.createNewFile()) { fw2.write(""); }
+
+            fw2.write(sb2.toString());
+            fw2.close();
+        }
+        catch (IOException ignored) { }
+    }
+
+    String translate(String s)
+    {
+        switch (s)
+        {
+            case "Fire": return "tnt";
+            case "Red / Nether Wart": return "brick_block";
+            case "Netherrack": return "netherrack";
+            case "Pink": return "wool 6";
+            case "Crimson Nylium": return "crimson_nylium";
+            case "Boron": return "element_5";
+            case "Lanthanum": return "element_57";
+            case "Crimson Planks": return "crimson_planks";
+            case "Orange / Terracotta / Copper": return "hardened_clay";
+            case "Fluorine": return "element_9";
+            case "Yellow / Hay": return "sponge";
+            case "Gold": return "gold_block";
+            case "Sand / End Stone": return "end_stone";
+            case "Lime": return "wool 5";
+            case "Green / Moss / Kelp": return "moss_block";
+            case "Grass": return "grass";
+            case "Emerald": return "emerald_block";
+            case "Leaves": return "leaves";
+            case "Hydrogen": return "element_1";
+            case "Slime": return "slime";
+            case "Light Blue": return "wool 3";
+            case "Cyan / Warped Stem / Prismarine": return "wool 9";
+            case "Blue": return "wool 11";
+            case "Dark Prismarine": return "diamond_block";
+            case "Lapis Lazuli": return "lapis_block";
+            case "Warped Wart / Oxidized Copper": return "warped_wart_block";
+            case "Warped Nylium": return "warped_nylium";
+            case "Ice": return "packed_ice";
+            case "Lithium": return "element_3";
+            case "Beryllium": return "element_4";
+            case "Weathered Copper": return "waxed_weathered_copper";
+            case "Magenta / Purpur": return "purpur_block";
+            case "Purple / Amethyst": return "amethyst_block";
+            case "Helium": return "element_2";
+            case "Actinium": return "element_89";
+            case "Black / Blackstone": return "blackstone";
+            case "???": return "element_0";
+            case "Sculk Sensor": return "sculk";
+            case "Gray": return "wool 7";
+            case "Light Gray": return "wool 8";
+            case "Iron": return "iron_block";
+            case "Stone": return "stone";
+            case "Scandium": return "element_21";
+            case "Stone Bricks": return "stonebrick";
+            case "Deepslate": return "deepslate";
+            case "White / Snow": return "snow";
+            case "Quartz": return "quartz_block";
+            case "Cobweb": return "web";
+            case "Calcite": return "calcite";
+            case "Brown / Soul Sand": return "wool 12";
+            case "Planks": return "planks";
+            case "Dirt": return "dirt";
+            case "Aluminum": return "element_13";
+            case "Exposed Copper": return "waxed_exposed_copper";
+            case "Raw Iron": return "raw_iron_block";
+            case "Tuff": return "tuff";
+            case "Dripstone": return "dripstone_block";
+            default: return "air";
+        }
+    }
+    
+    public void dither1()
+    {
+    }
+    
+    public void dither2()
+    {
     }
 }
