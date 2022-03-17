@@ -2,7 +2,7 @@ package sample;
 
 public class MapColor
 {
-    public final int r, g, b;
+    public int r, g, b;
     public final String name;
 
     public MapColor(int r, int g, int b, boolean b_)
