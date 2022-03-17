@@ -66,11 +66,13 @@ public class Init
                         int i = bi.getRGB(z, a);
                         Color c = new Color(i, true);
                         
-                        int[][] temp = new int[3][colors.length + 1];
+                        int[][] temp = new int[3][length];
                         
                         System.arraycopy(colors[0], 0, temp[0], 0, length - 1);
                         System.arraycopy(colors[1], 0, temp[1], 0, length - 1);
                         System.arraycopy(colors[2], 0, temp[2], 0, length - 1);
+                        
+                        colors = new int[3][length];
                         
                         System.arraycopy(temp[0], 0, colors[0], length);
                         System.arraycopy(temp[1], 0, colors[1], length);
