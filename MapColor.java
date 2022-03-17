@@ -25,9 +25,9 @@ public class MapColor
         }
 
         this.name = mc[ii].name;
-        this.r = mc[ii].r;
-        this.g = mc[ii].g;
-        this.b = mc[ii].b;
+        this.r = r;
+        this.g = g;
+        this.b = b;
     }
 
     private MapColor(String name, int r, int g, int b)
