@@ -2,7 +2,7 @@ package sample;
 
 public class MapColor
 {
-    public double r, g, b;
+    public double r, g, b, r_, g_, b_;
     public final String name;
 
     public MapColor(int r, int g, int b, boolean b_)
@@ -28,6 +28,9 @@ public class MapColor
         this.r = r;
         this.g = g;
         this.b = b;
+        this.r_ = mc[ii].r;
+        this.g_ = mc[ii].g;
+        this.b_ = mc[ii].b;
     }
 
     private MapColor(String name, int r, int g, int b)
