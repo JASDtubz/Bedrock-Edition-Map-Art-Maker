@@ -56,7 +56,7 @@ public class Init
             for (double y = 0; y < h; y += d)
             {
                 int length = 0;
-                int[][] colors = new int[3][10000];
+                int[][] colors = new int[3][1];
 
                 for (int z = (int) x; z < x + Math.floor(d_); z++)
                 {
@@ -65,6 +65,16 @@ public class Init
                         length++;
                         int i = bi.getRGB(z, a);
                         Color c = new Color(i, true);
+                        
+                        int[][] temp = new int[3][colors.length + 1];
+                        
+                        System.arraycopy(colors[0], 0, temp[0], 0, length - 1);
+                        System.arraycopy(colors[1], 0, temp[1], 0, length - 1);
+                        System.arraycopy(colors[2], 0, temp[2], 0, length - 1);
+                        
+                        System.arraycopy(temp[0], 0, colors[0], length);
+                        System.arraycopy(temp[1], 0, colors[1], length);
+                        System.arraycopy(temp[2], 0, colors[2], length);
 
                         int r_ = c.getRed();
                         int g_ = c.getGreen();
