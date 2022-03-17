@@ -21,7 +21,7 @@ public class Main extends Application
 {
     Label l;
     TextField tf;
-    Button b0, b1, b_;
+    Button b0, b1, b_, bx, by;
     public Canvas c = new Canvas(256, 256);
     Canvas c0 = new Canvas(256, 256);
     static Label l_ = new Label();
@@ -39,6 +39,8 @@ public class Main extends Application
         this.b0 = new Button("Start");
         this.b1 = new Button("Start 2");
         this.b_ = new Button("Make Map");
+        this.bx = new Button("Dither 1");
+        this.by = new Button("Dither 2");
         Main.l_ = new Label("0%");
 
         Button[][] bb = new Button[8][8];
@@ -50,7 +52,7 @@ public class Main extends Application
         this.b1.setTooltip(new Tooltip("This algorithm uses stair technique but no dithering."));
 
         HBox hb = new HBox(5);
-        hb.getChildren().addAll(this.b0, this.b1, this.b_);
+        hb.getChildren().addAll(this.b0, this.b1, this.b_, this.bx, this.by);
 
         for (int i = 0; i < 8; i++)
         {
@@ -82,6 +84,8 @@ public class Main extends Application
         this.b0.setOnAction(e -> this.init(false));
         this.b1.setOnAction(e -> this.init(true));
         this.b_.setOnAction(e -> this.make());
+        this.bx.setOnAction(e -> this.dither1());
+        this.by.setOnAction(e -> this.dither2());
     }
 
     public void init(boolean b)
@@ -170,5 +174,13 @@ public class Main extends Application
                 gc.fillRect(0, i * 16, 256, 1);
             }
         }
+    }
+    
+    public void dither1()
+    {
+    }
+    
+    public void dither2()
+    {
     }
 }
