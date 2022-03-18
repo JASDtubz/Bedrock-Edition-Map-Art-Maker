@@ -385,41 +385,84 @@ public class Main extends Application
                     try
                     {
                         d = Main.mc[x + 1][y].r_ + rr * 0.4375;
-                        Main.mc[x + 1][y].r_ = d > 255 || d < 0 ? Main.mc[x + 1][y].r_ : d;
+                        
+                        if (d > 255) { Main.mc[x + 1][y].r_ = 255; }
+                        else if (d < 0) { Main.mc[x + 1][y].r_ = 0; }
+                        else { Main.mc[x + 1][y].r_ = d; }
+                        
                         d = Main.mc[x + 1][y].g_ + gg * 0.4375;
-                        Main.mc[x + 1][y].g_ = d > 255 || d < 0 ? Main.mc[x + 1][y].g_ : d;
+                        
+                        if (d > 255) { Main.mc[x + 1][y].g_ = 255; }
+                        else if (d < 0) { Main.mc[x + 1][y].g_ = 0; }
+                        else { Main.mc[x + 1][y].g_ = d; }
+                        
                         d = Main.mc[x + 1][y].b_ + bb * 0.4375;
-                        Main.mc[x + 1][y].b_ = d > 255 || d < 0 ? Main.mc[x + 1][y].b_ : d;
+                        
+                        if (d > 255) { Main.mc[x + 1][y].b_ = 255; }
+                        else if (d < 0) { Main.mc[x + 1][y].b_ = 0; }
+                        else { Main.mc[x + 1][y].b_ = d; }
+
+                        //above is left : below is down left
 
                         d = Main.mc[x + 1][y + 1].r_ + rr * 0.0625;
-                        Main.mc[x + 1][y + 1].r_ = d > 255 || d < 0 ? Main.mc[x + 1][y + 1].r_ : d;
+                        
+                        if (d > 255) { Main.mc[x + 1][y + 1].r_ = 255; }
+                        else if (d < 0) { Main.mc[x + 1][y + 1].r_ = 0; }
+                        else { Main.mc[x + 1][y + 1].r_ = d; }
+                        
                         d = Main.mc[x + 1][y + 1].g_ + gg * 0.0625;
-                        Main.mc[x + 1][y + 1].g_ = d > 255 || d < 0 ? Main.mc[x + 1][y + 1].g_ : d;
+                        
+                        if (d > 255) { Main.mc[x + 1][y + 1].g_ = 255; }
+                        else if (d < 0) { Main.mc[x + 1][y + 1].g_ = 0; }
+                        else { Main.mc[x + 1][y + 1].g_ = d; }
+                        
                         d = Main.mc[x + 1][y + 1].b_ + bb * 0.0625;
-                        Main.mc[x + 1][y + 1].b_ = d > 255 || d < 0 ? Main.mc[x + 1][y + 1].b_ : d;
+                        
+                        if (d > 255) { Main.mc[x + 1][y + 1].b_ = 255; }
+                        else if (d < 0) { Main.mc[x + 1][y + 1].b_ = 0; }
+                        else { Main.mc[x + 1][y + 1].b_ = d; }
                     }
                     catch (Exception ignore) { }
 
                     d = Main.mc[x - 1][y + 1].r_ + rr * 0.1875;
-                    Main.mc[x - 1][y + 1].r_ = d > 255 || d < 0 ? Main.mc[x - 1][y + 1].r_ : d;
+                    
+                    if (d > 255) { Main.mc[x - 1][y + 1].r_ = 255; }
+                    else if (d < 0) { Main.mc[x - 1][y + 1].r_ = 0; }
+                    else { Main.mc[x - 1][y + 1].r_ = d; }
+                    
                     d = Main.mc[x - 1][y + 1].g_ + gg * 0.1875;
-                    Main.mc[x - 1][y + 1].g_ = d > 255 || d < 0 ? Main.mc[x - 1][y + 1].g_ : d;
+                    
+                    if (d > 255) { Main.mc[x - 1][y + 1].g_ = 255; }
+                    else if (d < 0) { Main.mc[x - 1][y + 1].g_ = 0; }
+                    else { Main.mc[x - 1][y + 1].g_ = d; }
+                    
                     d = Main.mc[x - 1][y + 1].b_ + bb * 0.1875;
-                    Main.mc[x - 1][y + 1].b_ = d > 255 || d < 0 ? Main.mc[x - 1][y + 1].b_ : d;
+                    
+                    if (d > 255) { Main.mc[x - 1][y + 1].b_ = 255; }
+                    else if (d < 0) { Main.mc[x - 1][y + 1].b_ = 0; }
+                    else { Main.mc[x - 1][y + 1].b_ = d; }
 
+                    //above is down right : below is down
+                    
                     d = Main.mc[x][y + 1].r_ + rr * 0.3125;
-                    Main.mc[x][y + 1].r_ = d > 255 || d < 0 ? Main.mc[x][y + 1].r_ : d;
+                    
+                    if (d > 255) { Main.mc[x][y + 1].r_ = 255; }
+                    else if (d < 0) { Main.mc[x][y + 1].r_ = 0; }
+                    else { Main.mc[x][y + 1].r_ = d; }
+                    
                     d = Main.mc[x][y + 1].g_ + gg * 0.3125;
-                    Main.mc[x][y + 1].g_ = d > 255 || d < 0 ? Main.mc[x][y + 1].g_ : d;
+                    
+                    if (d > 255) { Main.mc[x][y + 1].g_ = 255; }
+                    else if (d < 0) { Main.mc[x][y + 1].g_ = 0; }
+                    else { Main.mc[x][y + 1].g_ = d; }
+                    
                     d = Main.mc[x][y + 1].b_ + bb * 0.3125;
-                    Main.mc[x][y + 1].b_ = d > 255 || d < 0 ? Main.mc[x][y + 1].b_ : d;
+                    
+                    if (d > 255) { Main.mc[x][y + 1].b_ = 255; }
+                    else if (d < 0) { Main.mc[x][y + 1].b_ = 0; }
+                    else { Main.mc[x][y + 1].b_ = d; }
                 }
                 catch (Exception ignore) { }
-
-                if (Main.mc[x][y].r_ < 0 || Main.mc[x][y].r_ > 255 || Main.mc[x][y].g_ < 0 || Main.mc[x][y].g_ > 255 || Main.mc[x][y].b_ < 0 || Main.mc[x][y].b_ > 255)
-                {
-                    System.out.println(x + " " + y + " " + Main.mc[x][y].r_ + " " + Main.mc[x][y].g_ + " " + Main.mc[x][y].b_);
-                }
             }
         }
 
