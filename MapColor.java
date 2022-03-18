@@ -104,6 +104,10 @@ public class MapColor
         final MapColor rawIron = new MapColor("Raw Iron", 184, 148, 125);
         final MapColor tuff = new MapColor("Tuff", 48, 35, 30);
         final MapColor dripstone = new MapColor("Dripstone", 64, 42, 30);
+        final MapColor spruceLeaves = new MapColor("Spruce Leaves", 81, 105, 49);
+        final MapColor birchLeaves = new MapColor("Birch Leaves", 58, 76, 39);
+        final MapColor lichen = new MapColor("Glow Lichen", 108, 142, 127);
+        final MapColor sprucePlanks = new MapColor("Spruce Planks", 110, 73, 42);
 
         final MapColor fire0 = new MapColor(fire.name + "-", 252, 0, 0);
         final MapColor red0 = new MapColor(red.name + "-", 151, 50, 50);
