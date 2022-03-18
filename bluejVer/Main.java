@@ -339,6 +339,10 @@ public class Main extends Application
             case "Raw Iron": return "raw_iron_block";
             case "Tuff": return "tuff";
             case "Dripstone": return "dripstone_block";
+            case "Spruce Leaves": return "leaves 1";
+            case "Birch Leaves": return "leaves 2";
+            case "Glow Lichen": return "glow_lichen";
+            case "Spruce Planks": return "planks 1";
             default: return "air";
         }
     }
