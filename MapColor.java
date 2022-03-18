@@ -166,6 +166,10 @@ public class MapColor
         final MapColor rawIron0 = new MapColor(rawIron.name + "-", 213, 173, 145);
         final MapColor tuff0 = new MapColor(tuff.name + "-", 56, 41, 35);
         final MapColor dripstone0 = new MapColor(dripstone.name + "-", 75, 49, 35);
+        final MapColor spruceLeaves0 = new MapColor(spruceLeaves.name + "-", 51, 81, 51);
+        final MapColor birchLeaves0 = new MapColor(birchLeaves.name + "-", 68, 89, 45);
+        final MapColor lichen0 = new MapColor(lichen.name + "-", 126, 165, 148);
+        final MapColor sprucePlanks0 = new MapColor(sprucePlanks.name + "-", 127, 85, 48);
 
         final MapColor fire1 = new MapColor(fire.name + "+", 178, 0, 0);
         final MapColor red1 = new MapColor(red.name + "+", 107, 36, 36);
@@ -224,6 +228,10 @@ public class MapColor
         final MapColor rawIron1 = new MapColor(rawIron.name + "+", 150, 122, 102);
         final MapColor tuff1 = new MapColor(tuff.name + "+", 40, 28, 24);
         final MapColor dripstone1 = new MapColor(dripstone.name + "+", 52, 35, 24);
+        final MapColor spruceLeaves1 = new MapColor(spruceLeaves.name + "+", 37, 57, 37);
+        final MapColor birchLeaves1 = new MapColor(birchLeaves.name + "+", 47, 62, 32);
+        final MapColor lichen1 = new MapColor(lichen.name + "+", 88, 116, 104);
+        final MapColor sprucePlanks1 = new MapColor(sprucePlanks.name + "+", 90, 59, 34);
 
         if (!bool)
         {
