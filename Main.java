@@ -402,7 +402,7 @@ public class Main extends Application
                         else if (d < 0) { Main.mc[x + 1][y].b_ = 0; }
                         else { Main.mc[x + 1][y].b_ = d; }
 
-                        //above is left : below is down left
+                        //above is right : below is down right
 
                         d = Main.mc[x + 1][y + 1].r_ + rr * 0.0625;
                         
@@ -442,7 +442,7 @@ public class Main extends Application
                     else if (d < 0) { Main.mc[x - 1][y + 1].b_ = 0; }
                     else { Main.mc[x - 1][y + 1].b_ = d; }
 
-                    //above is down right : below is down
+                    //above is down left : below is down
                     
                     d = Main.mc[x][y + 1].r_ + rr * 0.3125;
                     
@@ -509,8 +509,54 @@ public class Main extends Application
                             if (d > 255) { Main.mc[x + 2][y].b_ = 255; }
                             else if (d < 0) { Main.mc[x + 2][y].b_ = 0; }
                             else { Main.mc[x + 2][y].b_ = d; }
+                            
+                            //above is right 2 : below is down right2
+                            
+                            d = Main.mc[x + 2][y + 1].r_ + rr * three;
+                        
+                            if (d > 255) { Main.mc[x + 2][y + 1].r_ = 255; }
+                            else if (d < 0) { Main.mc[x + 2][y + 1].r_ = 0; }
+                            else { Main.mc[x + 2][y + 1].r_ = d; }
+                            
+                            d = Main.mc[x + 2][y + 1].g_ + gg * three;
+                        
+                            if (d > 255) { Main.mc[x + 2][y + 1].g_ = 255; }
+                            else if (d < 0) { Main.mc[x + 2][y + 1].g_ = 0; }
+                            else { Main.mc[x + 2][y + 1].g_ = d; }
+                            
+                            d = Main.mc[x + 2][y + 1].b_ + bb * three;
+                        
+                            if (d > 255) { Main.mc[x + 2][y + 1].b_ = 255; }
+                            else if (d < 0) { Main.mc[x + 2][y + 1].b_ = 0; }
+                            else { Main.mc[x + 2][y + 1].b_ = d; }
+                            
+                            //above is down right 2 : below is down 2 right 2
+                            
+                            d = Main.mc[x + 2][y + 2].r_ + rr * one;
+                        
+                            if (d > 255) { Main.mc[x + 2][y + 2].r_ = 255; }
+                            else if (d < 0) { Main.mc[x + 2][y + 2].r_ = 0; }
+                            else { Main.mc[x + 2][y + 2].r_ = d; }
+                            
+                            d = Main.mc[x + 2][y + 2].g_ + gg * one;
+                        
+                            if (d > 255) { Main.mc[x + 2][y + 2].g_ = 255; }
+                            else if (d < 0) { Main.mc[x + 2][y + 2].g_ = 0; }
+                            else { Main.mc[x + 2][y + 2].g_ = d; }
+                            
+                            d = Main.mc[x + 2][y + 2].b_ + bb * one;
+                        
+                            if (d > 255) { Main.mc[x + 2][y + 2].b_ = 255; }
+                            else if (d < 0) { Main.mc[x + 2][y + 2].b_ = 0; }
+                            else { Main.mc[x + 2][y + 2].b_ = d; }
                         }
                         catch (Exception ignore) { }
+                        
+                        d = Main.mc[x + 1][y].r_ + rr * one;
+                        
+                        if (d > 255) { Main.mc[x + 1][y].r_ = 255; }
+                        else if (d < 0) { Main.mc[x + 1][y].r_ = 0; }
+                        else { Main.mc[x + 1][y].r_ = d; }
                     }
                     catch (Exception ignore)
                 }
