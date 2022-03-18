@@ -245,10 +245,22 @@ public class Main extends Application
 
                     if (n < 10000)
                     {
+                        if (s.equals("Dripleaf") || s.equals("Glow Lichen"))
+                        {
+                            sb.append("fill ~" + i + " " + (z - 1) + " ~" + j + " ~" + i + " " + (z - 1) + " ~" + j + " dirt\n");
+                            n++;
+                        }
+                    
                         sb.append("fill ~" + i + " " + z + " ~" + j + " ~" + i + " " + z + " ~" + j + " " + this.translate(s) + "\n");
                     }
                     else
                     {
+                        if (s.equals("Dripleaf") || s.equals("Glow Lichen"))
+                        {
+                            sb2.append("fill ~" + i + " " + (z - 1) + " ~" + j + " ~" + i + " " + (z - 1) + " ~" + j + " dirt\n");
+                            n++;
+                        }
+                    
                         sb2.append("fill ~" + i + " " + z + " ~" + j + " ~" + i + " " + z + " ~" + j + " " + this.translate(s) + "\n");
                     }
 
