@@ -471,5 +471,51 @@ public class Main extends Application
 
     public void dither2()
     {
+        for (int y = 0; y < 128; y++)
+        {
+            for (int x = 0; x < 128; x++)
+            {
+                Main.mc[x][y] = new MapColor(Main.mc[x][y].r_, Main.mc[x][y].g_, Main.mc[x][y].b_, this.bool);
+                double rr = Main.mc[x][y].r_ - Main.mc[x][y].r;
+                double gg = Main.mc[x][y].g_ - Main.mc[x][y].g;
+                double bb = Main.mc[x][y].b_ - Main.mc[x][y].b;
+                double d = 0;
+                
+                final double one = 1.0 / 48;
+                final double three = 3.0 / 48;
+                final double five = 5.0 / 48;
+                final double seven = 7.0 / 48;
+                
+                try
+                {
+                    try
+                    {
+                        try
+                        {
+                            d = Main.mc[x + 2][y].r_ + rr * five;
+                        
+                            if (d > 255) { Main.mc[x + 2][y].r_ = 255; }
+                            else if (d < 0) { Main.mc[x + 2][y].r_ = 0; }
+                            else { Main.mc[x + 2][y].r_ = d; }
+                            
+                            d = Main.mc[x + 2][y].g_ + gg * five;
+                        
+                            if (d > 255) { Main.mc[x + 2][y].g_ = 255; }
+                            else if (d < 0) { Main.mc[x + 2][y].g_ = 0; }
+                            else { Main.mc[x + 2][y].g_ = d; }
+                            
+                            d = Main.mc[x + 2][y].b_ + bb * five;
+                        
+                            if (d > 255) { Main.mc[x + 2][y].b_ = 255; }
+                            else if (d < 0) { Main.mc[x + 2][y].b_ = 0; }
+                            else { Main.mc[x + 2][y].b_ = d; }
+                        }
+                        catch (Exception ignore) { }
+                    }
+                    catch (Exception ignore)
+                }
+                catch (Exception ignore)
+            }
+        }
     }
 }
