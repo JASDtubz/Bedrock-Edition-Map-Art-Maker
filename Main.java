@@ -205,8 +205,8 @@ public class Main extends Application
             for (int j = -127; j < 1; j++)
             {
                 String s = Main.mc[i + 127][j + 127].name.contains("+") || Main.mc[i + 127][j + 127].name.contains("-")
-                        ? Main.mc[i + 127][j + 127].name.substring(0, Main.mc[i + 127][j + 127].name.length() - 1)
-                        : Main.mc[i + 127][j + 127].name;
+                    ? Main.mc[i + 127][j + 127].name.substring(0, Main.mc[i + 127][j + 127].name.length() - 1)
+                    : Main.mc[i + 127][j + 127].name;
 
                 if (j == -127)
                 {
@@ -254,10 +254,22 @@ public class Main extends Application
 
                     if (n < 10000)
                     {
+                        if (s.equals("Dripleaf") || s.equals("Glow Lichen"))
+                        {
+                            sb.append("fill ~" + i + " " + (z - 1) + " ~" + j + " ~" + i + " " + (z - 1) + " ~" + j + " dirt\n");
+                            n++;
+                        }
+                    
                         sb.append("fill ~" + i + " " + z + " ~" + j + " ~" + i + " " + z + " ~" + j + " " + this.translate(s) + "\n");
                     }
                     else
                     {
+                        if (s.equals("Dripleaf") || s.equals("Glow Lichen"))
+                        {
+                            sb2.append("fill ~" + i + " " + (z - 1) + " ~" + j + " ~" + i + " " + (z - 1) + " ~" + j + " dirt\n");
+                            n++;
+                        }
+                    
                         sb2.append("fill ~" + i + " " + z + " ~" + j + " ~" + i + " " + z + " ~" + j + " " + this.translate(s) + "\n");
                     }
 
@@ -348,6 +360,10 @@ public class Main extends Application
             case "Raw Iron": return "raw_iron_block";
             case "Tuff": return "tuff";
             case "Dripstone": return "dripstone_block";
+            case "Spruce Leaves": return "leaves 1";
+            case "Birch Leaves": return "leaves 2";
+            case "Glow Lichen": return "glow_lichen";
+            case "Spruce Planks": return "planks 1";
             default: return "air";
         }
     }
