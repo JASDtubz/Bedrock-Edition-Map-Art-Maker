@@ -5,7 +5,7 @@ Run program using a javafx ide and then type the image location into the text bo
 
 Do not copy this repository because nothing will happen. I did not create any dependencies and files that can help run the program quickly. Instead copy the java classes individually and to the right spots. (You need to know how JavaFX works in order to do this)
 
-Join discord [link](https://discord.gg/MuHPVWFRsk) to suggest to me to add more features!
+Join discord [link](https://discord.gg/MuHPVWFRsk) for help and to suggest more features!
 
 ## Version 0
 ### November 6, 2021
