@@ -23,8 +23,9 @@ Join discord [link](https://discord.gg/MuHPVWFRsk) for help and to suggest more 
 ## Version 1
 ### March 19, 2022
 - 2 Dithering algorithms were added.
-- Function button added to create map in Minecraft.
+- Function button added to create map using the /function command in Minecraft.
   - You have to manually copy and paste the created .mcfunction files to a behavior pack.
+    - Make sure to do "/function make1" first then do "/function make2".
     - You need to know how to work with behavior packs.
   - Need to have Education edition and all Experimental features turned on.
 - Added Spruce Leaves, Birch Leaves, Glow Lichen and Spruce Wood because they were forgotten.
