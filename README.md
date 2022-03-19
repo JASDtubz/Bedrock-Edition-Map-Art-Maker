@@ -30,4 +30,5 @@ Join discord [link](https://discord.gg/MuHPVWFRsk) to suggest to me to add more 
 - Added Spruce Leaves, Birch Leaves, Glow Lichen and Spruce Wood because they were forgotten.
 - Removed Grass Block and Oak Leaves due to biome color changes.
   - Will be added later when checkbox for "Superflat" is added.
+- Blocks.txt was appearing in the wrong orientation and was not fixed yet.
 - Thinking of discontinuing the BlueJ version due to its weird compiling issues.
