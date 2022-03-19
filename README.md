@@ -21,6 +21,7 @@ Join discord [link](https://discord.gg/MuHPVWFRsk) for help and to suggest more 
   - Chunk text file not appearing consistently.
 
 
+
 ## Version 1
 ### March 19, 2022
 - 2 Dithering algorithms were added.
