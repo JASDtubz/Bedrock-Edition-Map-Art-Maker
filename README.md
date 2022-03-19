@@ -28,6 +28,7 @@ Join discord [link](https://discord.gg/MuHPVWFRsk) for help and to suggest more 
     - Make sure to do "/function make1" first then do "/function make2".
     - You need to know how to work with behavior packs.
   - Need to have Education edition and all Experimental features turned on.
+  - You have to go to the southeastern corner of the map to do the functions.
 - Added Spruce Leaves, Birch Leaves, Glow Lichen and Spruce Wood because they were forgotten.
 - Removed Grass Block and Oak Leaves due to biome color changes.
   - Will be added later when checkbox for "Superflat" is added.
