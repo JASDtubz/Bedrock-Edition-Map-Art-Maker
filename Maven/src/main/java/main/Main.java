@@ -1,4 +1,4 @@
-package sample;
+package main;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -161,7 +161,7 @@ public class Main extends Application
                 File f = new File("Blocks.txt");
                 FileWriter fw = new FileWriter(f);
 
-                if (f.createNewFile()) { fw.write(""); }
+                f.createNewFile();
 
                 fw.write(sb.toString());
                 fw.close();
@@ -252,14 +252,14 @@ public class Main extends Application
                     if (Main.mc[i + 127][j + 127].name.contains("+")) { z -= 2; }
                     else if (Main.mc[i + 127][j + 127].name.contains("-")) { z += 2; }
 
-                    if (n < 10000)
+                    if (n < 9998)
                     {
                         if (s.equals("Dripleaf") || s.equals("Glow Lichen"))
                         {
                             sb.append("fill ~" + i + " " + (z - 1) + " ~" + j + " ~" + i + " " + (z - 1) + " ~" + j + " dirt\n");
                             n++;
                         }
-                    
+
                         sb.append("fill ~" + i + " " + z + " ~" + j + " ~" + i + " " + z + " ~" + j + " " + this.translate(s) + "\n");
                     }
                     else
@@ -269,7 +269,7 @@ public class Main extends Application
                             sb2.append("fill ~" + i + " " + (z - 1) + " ~" + j + " ~" + i + " " + (z - 1) + " ~" + j + " dirt\n");
                             n++;
                         }
-                    
+
                         sb2.append("fill ~" + i + " " + z + " ~" + j + " ~" + i + " " + z + " ~" + j + " " + this.translate(s) + "\n");
                     }
 
@@ -283,7 +283,7 @@ public class Main extends Application
             File f1 = new File("make1.mcfunction");
             FileWriter fw1 = new FileWriter(f1);
 
-            if (f1.createNewFile()) { fw1.write(""); }
+            f1.createNewFile();
 
             fw1.write(sb.toString());
             fw1.close();
@@ -291,7 +291,7 @@ public class Main extends Application
             File f2 = new File("make2.mcfunction");
             FileWriter fw2 = new FileWriter(f2);
 
-            if (f2.createNewFile()) { fw2.write(""); }
+            f2.createNewFile();
 
             fw2.write(sb2.toString());
             fw2.close();
@@ -378,7 +378,7 @@ public class Main extends Application
                 double rr = Main.mc[x][y].r_ - Main.mc[x][y].r;
                 double gg = Main.mc[x][y].g_ - Main.mc[x][y].g;
                 double bb = Main.mc[x][y].b_ - Main.mc[x][y].b;
-                double d = 0;
+                double d;
 
                 try
                 {
@@ -421,45 +421,45 @@ public class Main extends Application
                     else { Main.mc[x + 1][y + 1].b_ = d; }
                 }
                 catch (Exception ignore) { }
-                
+
                 //above is right stuff : below is down stuff
 
                 try
                 {
                     d = Main.mc[x][y + 1].r_ + rr * 0.3125;
-                    
+
                     if (d > 255) { Main.mc[x][y + 1].r_ = 255; }
                     else if (d < 0) { Main.mc[x][y + 1].r_ = 0; }
                     else { Main.mc[x][y + 1].r_ = d; }
-                    
+
                     d = Main.mc[x][y + 1].g_ + gg * 0.3125;
-                    
+
                     if (d > 255) { Main.mc[x][y + 1].g_ = 255; }
                     else if (d < 0) { Main.mc[x][y + 1].g_ = 0; }
                     else { Main.mc[x][y + 1].g_ = d; }
-                    
+
                     d = Main.mc[x][y + 1].b_ + bb * 0.3125;
-                    
+
                     if (d > 255) { Main.mc[x][y + 1].b_ = 255; }
                     else if (d < 0) { Main.mc[x][y + 1].b_ = 0; }
                     else { Main.mc[x][y + 1].b_ = d; }
-                    
+
                     //above is down : below is down left
 
                     d = Main.mc[x - 1][y + 1].r_ + rr * 0.1875;
-                    
+
                     if (d > 255) { Main.mc[x - 1][y + 1].r_ = 255; }
                     else if (d < 0) { Main.mc[x - 1][y + 1].r_ = 0; }
                     else { Main.mc[x - 1][y + 1].r_ = d; }
-                    
+
                     d = Main.mc[x - 1][y + 1].g_ + gg * 0.1875;
-                    
+
                     if (d > 255) { Main.mc[x - 1][y + 1].g_ = 255; }
                     else if (d < 0) { Main.mc[x - 1][y + 1].g_ = 0; }
                     else { Main.mc[x - 1][y + 1].g_ = d; }
-                    
+
                     d = Main.mc[x - 1][y + 1].b_ + bb * 0.1875;
-                    
+
                     if (d > 255) { Main.mc[x - 1][y + 1].b_ = 255; }
                     else if (d < 0) { Main.mc[x - 1][y + 1].b_ = 0; }
                     else { Main.mc[x - 1][y + 1].b_ = d; }
@@ -481,13 +481,13 @@ public class Main extends Application
                 double rr = Main.mc[x][y].r_ - Main.mc[x][y].r;
                 double gg = Main.mc[x][y].g_ - Main.mc[x][y].g;
                 double bb = Main.mc[x][y].b_ - Main.mc[x][y].b;
-                double d = 0;
-                
+                double d;
+
                 final double one = 1.0 / 48;
                 final double three = 3.0 / 48;
                 final double five = 5.0 / 48;
                 final double seven = 7.0 / 48;
-                
+
                 try
                 {
                     d = Main.mc[x + 2][y].r_ + rr * five;
@@ -549,9 +549,9 @@ public class Main extends Application
                     else { Main.mc[x + 2][y + 2].b_ = d; }
                 }
                 catch (Exception ignore) { }
-                        
+
                 //above is right 2 stuff : below is right stuff
-                
+
                 try
                 {
                     d = Main.mc[x + 1][y].r_ + rr * seven;
@@ -613,9 +613,9 @@ public class Main extends Application
                     else { Main.mc[x + 1][y + 2].b_ = d; }
                 }
                 catch (Exception ignore) { }
-                
+
                 //above is right stuff : below is down stuff
-                
+
                 try
                 {
                     d = Main.mc[x][y + 1].r_ + rr * seven;
@@ -623,53 +623,53 @@ public class Main extends Application
                     if (d > 255) { Main.mc[x][y + 1].r_ = 255; }
                     else if (d < 0) { Main.mc[x][y + 1].r_ = 0; }
                     else { Main.mc[x][y + 1].r_ = d; }
-                    
+
                     d = Main.mc[x][y + 1].g_ + gg * seven;
 
                     if (d > 255) { Main.mc[x][y + 1].g_ = 255; }
                     else if (d < 0) { Main.mc[x][y + 1].g_ = 0; }
                     else { Main.mc[x][y + 1].g_ = d; }
-                    
+
                     d = Main.mc[x][y + 1].b_ + bb * seven;
 
                     if (d > 255) { Main.mc[x][y + 1].b_ = 255; }
                     else if (d < 0) { Main.mc[x][y + 1].b_ = 0; }
                     else { Main.mc[x][y + 1].b_ = d; }
-                    
+
                     //above is down : below is down left
-                    
+
                     d = Main.mc[x - 1][y + 1].r_ + rr * five;
 
                     if (d > 255) { Main.mc[x - 1][y + 1].r_ = 255; }
                     else if (d < 0) { Main.mc[x - 1][y + 1].r_ = 0; }
                     else { Main.mc[x - 1][y + 1].r_ = d; }
-                    
+
                     d = Main.mc[x - 1][y + 1].g_ + gg * five;
 
                     if (d > 255) { Main.mc[x - 1][y + 1].g_ = 255; }
                     else if (d < 0) { Main.mc[x - 1][y + 1].g_ = 0; }
                     else { Main.mc[x - 1][y + 1].g_ = d; }
-                    
+
                     d = Main.mc[x - 1][y + 1].b_ + bb * five;
 
                     if (d > 255) { Main.mc[x - 1][y + 1].b_ = 255; }
                     else if (d < 0) { Main.mc[x - 1][y + 1].b_ = 0; }
                     else { Main.mc[x - 1][y + 1].b_ = d; }
-                    
+
                     //above is down left : below is down left 2
-                    
+
                     d = Main.mc[x - 2][y + 1].r_ + rr * three;
 
                     if (d > 255) { Main.mc[x - 2][y + 1].r_ = 255; }
                     else if (d < 0) { Main.mc[x - 2][y + 1].r_ = 0; }
                     else { Main.mc[x - 2][y + 1].r_ = d; }
-                    
+
                     d = Main.mc[x - 2][y + 1].g_ + gg * three;
 
                     if (d > 255) { Main.mc[x - 2][y + 1].g_ = 255; }
                     else if (d < 0) { Main.mc[x - 2][y + 1].g_ = 0; }
                     else { Main.mc[x - 2][y + 1].g_ = d; }
-                    
+
                     d = Main.mc[x - 2][y + 1].b_ + bb * three;
 
                     if (d > 255) { Main.mc[x - 2][y + 1].b_ = 255; }
@@ -677,9 +677,9 @@ public class Main extends Application
                     else { Main.mc[x - 2][y + 1].b_ = d; }
                 }
                 catch (Exception ignore) { }
-                
+
                 //above is down stuff : below is down 2 stuff
-                
+
                 try
                 {
                     d = Main.mc[x][y + 2].r_ + rr * five;
@@ -687,53 +687,53 @@ public class Main extends Application
                     if (d > 255) { Main.mc[x][y + 2].r_ = 255; }
                     else if (d < 0) { Main.mc[x][y + 2].r_ = 0; }
                     else { Main.mc[x][y + 2].r_ = d; }
-                    
+
                     d = Main.mc[x][y + 2].g_ + gg * five;
 
                     if (d > 255) { Main.mc[x][y + 2].g_ = 255; }
                     else if (d < 0) { Main.mc[x][y + 2].g_ = 0; }
                     else { Main.mc[x][y + 2].g_ = d; }
-                    
+
                     d = Main.mc[x][y + 2].b_ + bb * five;
 
                     if (d > 255) { Main.mc[x][y + 2].b_ = 255; }
                     else if (d < 0) { Main.mc[x][y + 2].b_ = 0; }
                     else { Main.mc[x][y + 2].b_ = d; }
-                    
+
                     //above is down 2 : below is down 2 left
-                    
+
                     d = Main.mc[x - 1][y + 2].r_ + rr * three;
 
                     if (d > 255) { Main.mc[x - 1][y + 2].r_ = 255; }
                     else if (d < 0) { Main.mc[x - 1][y + 2].r_ = 0; }
                     else { Main.mc[x - 1][y + 2].r_ = d; }
-                    
+
                     d = Main.mc[x - 1][y + 2].g_ + gg * three;
 
                     if (d > 255) { Main.mc[x - 1][y + 2].g_ = 255; }
                     else if (d < 0) { Main.mc[x - 1][y + 2].g_ = 0; }
                     else { Main.mc[x - 1][y + 2].g_ = d; }
-                    
+
                     d = Main.mc[x - 1][y + 2].b_ + bb * three;
 
                     if (d > 255) { Main.mc[x - 1][y + 2].b_ = 255; }
                     else if (d < 0) { Main.mc[x - 1][y + 2].b_ = 0; }
                     else { Main.mc[x - 1][y + 2].b_ = d; }
-                    
+
                     //above is down 2 left : below is down 2 left 2
-                    
+
                     d = Main.mc[x - 2][y + 2].r_ + rr * one;
 
                     if (d > 255) { Main.mc[x - 2][y + 2].r_ = 255; }
                     else if (d < 0) { Main.mc[x - 2][y + 2].r_ = 0; }
                     else { Main.mc[x - 2][y + 2].r_ = d; }
-                    
+
                     d = Main.mc[x - 2][y + 2].g_ + gg * one;
 
                     if (d > 255) { Main.mc[x - 2][y + 2].g_ = 255; }
                     else if (d < 0) { Main.mc[x - 2][y + 2].g_ = 0; }
                     else { Main.mc[x - 2][y + 2].g_ = d; }
-                    
+
                     d = Main.mc[x - 2][y + 2].b_ + bb * one;
 
                     if (d > 255) { Main.mc[x - 2][y + 2].b_ = 255; }
@@ -743,7 +743,7 @@ public class Main extends Application
                 catch (Exception ignore) { }
             }
         }
-        
+
         this.make();
     }
 }
