@@ -200,9 +200,20 @@ public class Main extends Application
 
         for (int i = -127; i < 1; i++)
         {
-            //int z = 128;
-            int z = 100;
-            //int z = 64;
+            int z = 128;
+            int w = 128;
+
+            for (int j = -127; j < 1; j++)
+            {
+                if (Main.mc[i + 127][j + 127].name.contains("+")) { w -= 2; }
+                else if (Main.mc[i + 127][j + 127].name.contains("-")) { w += 2; }
+
+                if (j == 0)
+                {
+                    if (w > 319) { z -= w - 316; }
+                    else if (w < -64) { z += -64 - w; }
+                }
+            }
 
             for (int j = -127; j < 1; j++)
             {
