@@ -200,7 +200,9 @@ public class Main extends Application
 
         for (int i = -127; i < 1; i++)
         {
-            int z = 128;
+            //int z = 128;
+            int z = 100;
+            //int z = 64;
 
             for (int j = -127; j < 1; j++)
             {
@@ -210,38 +212,50 @@ public class Main extends Application
 
                 if (j == -127)
                 {
-                    if (n < 10000)
+                    if (n < 9997)
                     {
-                        sb.append("fill ~" + i + " 128 ~" + j + " ~" + i + " 128 ~" + j + " " + this.translate(s) + "\n");
+                        if (s.equals("Dripleaf") || s.equals("Glow Lichen"))
+                        {
+                            sb.append("setblock ~" + i + " " + (z - 1) + " ~" + j + " dirt\n");
+                            n++;
+                        }
+
+                        sb.append("setblock ~" + i + " " + z + " ~" + j + " " + this.translate(s) + "\n");
 
                         if (Main.mc[i + 127][j + 127].name.contains("+"))
                         {
-                            sb.append("fill ~" + i + " 130 ~" + (j - 1) + " ~" + i + " 130 ~" + (j - 1) + " " + "bedrock\n");
+                            sb.append("setblock ~" + i + " " + (z + 2) + " ~" + (j - 1) + " bedrock\n");
                         }
                         else if (Main.mc[i + 127][j + 127].name.contains("-"))
                         {
-                            sb.append("fill ~" + i + " 126 ~" + (j - 1) + " ~" + i + " 126 ~" + (j - 1) + " " + "bedrock\n");
+                            sb.append("setblock ~" + i + " " + (z - 2) + " ~" + (j - 1) + " bedrock\n");
                         }
                         else
                         {
-                            sb.append("fill ~" + i + " 128 ~" + (j - 1) + " ~" + i + " 128 ~" + (j - 1) + " " + "bedrock\n");
+                            sb.append("setblock ~" + i + " " + z + " ~" + (j - 1) + " bedrock\n");
                         }
                     }
                     else
                     {
-                        sb2.append("fill ~" + i + " 128 ~" + j + " ~" + i + " 128 ~" + j + " " + this.translate(s) + "\n");
+                        if (s.equals("Dripleaf") || s.equals("Glow Lichen"))
+                        {
+                            sb2.append("setblock ~" + i + " " + (z - 1) + " ~" + j + " dirt\n");
+                            n++;
+                        }
+
+                        sb2.append("setblock ~" + i + " " + z + " ~" + j + " " + this.translate(s) + "\n");
 
                         if (Main.mc[i + 127][j + 127].name.contains("+"))
                         {
-                            sb2.append("fill ~" + i + " 130 ~" + (j - 1) + " ~" + i + " 130 ~" + (j - 1) + " " + "bedrock\n");
+                            sb2.append("setblock ~" + i + " " + (z + 2) + " ~" + (j - 1) + " bedrock\n");
                         }
                         else if (Main.mc[i + 127][j + 127].name.contains("-"))
                         {
-                            sb2.append("fill ~" + i + " 126 ~" + (j - 1) + " ~" + i + " 126 ~" + (j - 1) + " " + "bedrock\n");
+                            sb2.append("setblock ~" + i + " " + (z - 2) + " ~" + (j - 1) + " bedrock\n");
                         }
                         else
                         {
-                            sb2.append("fill ~" + i + " 128 ~" + (j - 1) + " ~" + i + " 128 ~" + (j - 1) + " " + "bedrock\n");
+                            sb2.append("setblock ~" + i + " " + z + " ~" + (j - 1) + " bedrock\n");
                         }
                     }
 
@@ -256,25 +270,28 @@ public class Main extends Application
                     {
                         if (s.equals("Dripleaf") || s.equals("Glow Lichen"))
                         {
-                            sb.append("fill ~" + i + " " + (z - 1) + " ~" + j + " ~" + i + " " + (z - 1) + " ~" + j + " dirt\n");
+                            sb.append("setblock ~" + i + " " + (z - 1) + " ~" + j + " dirt\n");
                             n++;
                         }
 
-                        sb.append("fill ~" + i + " " + z + " ~" + j + " ~" + i + " " + z + " ~" + j + " " + this.translate(s) + "\n");
+                        sb.append("setblock ~" + i + " " + z + " ~" + j + " " + this.translate(s) + "\n");
                     }
                     else
                     {
                         if (s.equals("Dripleaf") || s.equals("Glow Lichen"))
                         {
-                            sb2.append("fill ~" + i + " " + (z - 1) + " ~" + j + " ~" + i + " " + (z - 1) + " ~" + j + " dirt\n");
+                            sb2.append("setblock ~" + i + " " + (z - 1) + " ~" + j + " dirt\n");
                             n++;
                         }
 
-                        sb2.append("fill ~" + i + " " + z + " ~" + j + " ~" + i + " " + z + " ~" + j + " " + this.translate(s) + "\n");
+                        sb2.append("setblock ~" + i + " " + z + " ~" + j + " " + this.translate(s) + "\n");
                     }
 
                     n++;
                 }
+
+                if (z > 319) { System.out.println("greater"); }
+                else if (z < -60) { System.out.println("less"); }
             }
         }
 
@@ -297,6 +314,8 @@ public class Main extends Application
             fw2.close();
         }
         catch (IOException ignored) { }
+
+        System.out.println("done");
     }
 
     String translate(String s)
@@ -364,6 +383,7 @@ public class Main extends Application
             case "Birch Leaves": return "leaves 2";
             case "Glow Lichen": return "glow_lichen";
             case "Spruce Planks": return "planks 1";
+            case "Dripleaf": return "big_dripleaf";
             default: return "air";
         }
     }
