@@ -32,7 +32,7 @@ public class Main extends Application
 
     public static MapColor[][] mc = new MapColor[128][128];
 
-    public static void main(String[] q) { launch(); }
+    public static void main(String[] q) { Application.launch(); }
 
     @Override
     public void start(Stage s)
