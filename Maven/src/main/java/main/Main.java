@@ -148,11 +148,18 @@ public class Main extends Application
                 for (int j = y * 16; j < (y + 1) * 16; j++)
                 {
                     MapColor mc = Main.mc[i][j];
-                    sb.append(mc.name).append(" | ");
                     gc.setFill(Color.rgb(mc.r, mc.g, mc.b));
                     gc.fillRect(i % 16 * 16, j % 16 * 16, 16, 16);
                 }
-
+            }
+            
+            for (int i = y * 16; i < (y + 1) * 16; i++)
+            {
+                for (int j = x * 16; j < (x + 1) * 16; j++)
+                {
+                    Main.mc[j][i].sb.append(mc.name).append(" | ");
+                }
+                
                 sb.append("\n");
             }
 
