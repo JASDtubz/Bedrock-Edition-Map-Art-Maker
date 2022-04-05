@@ -157,7 +157,7 @@ public class Main extends Application
             {
                 for (int j = x * 16; j < (x + 1) * 16; j++)
                 {
-                    Main.mc[j][i].sb.append(mc.name).append(" | ");
+                    sb.append(Main.mc[j][i].name).append(" | ");
                 }
                 
                 sb.append("\n");
