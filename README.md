@@ -34,3 +34,10 @@ Join discord [link](https://discord.gg/MuHPVWFRsk) for help and to suggest more 
   - Will be added later when checkbox for "Superflat" is added.
 - Blocks.txt was appearing in the wrong orientation and was not fixed yet.
 - Thinking of discontinuing the BlueJ version due to its weird compiling issues.
+
+## Version 1.0
+### April 5, 2022
+- Fixed blocks.txt and is now displaying correctly.
+- Replaced "fill" command with "setblock" command.
+- Rows will adjust themselves to fit the build height in the function commands.
+- Added Dripleaf becuase they were forgotten.
