@@ -155,10 +155,7 @@ public class Main extends Application
             
             for (int i = y * 16; i < (y + 1) * 16; i++)
             {
-                for (int j = x * 16; j < (x + 1) * 16; j++)
-                {
-                    sb.append(Main.mc[j][i].name).append(" | ");
-                }
+                for (int j = x * 16; j < (x + 1) * 16; j++) { sb.append(Main.mc[j][i].name).append(" | "); }
                 
                 sb.append("\n");
             }
