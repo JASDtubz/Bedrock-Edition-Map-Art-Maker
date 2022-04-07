@@ -56,7 +56,7 @@ public final class Main extends Application
         this.b1.setTooltip(new Tooltip("This algorithm uses stair technique."));
 
         HBox hb = new HBox(5);
-        hb.getChildren().addAll(this.b0, this.b1, this.b_, bx, by);
+        hb.getChildren().addAll(this.b0, this.b1, this.b_, bx, by, ba);
 
         for (int i = 0; i < 8; i++)
         {
