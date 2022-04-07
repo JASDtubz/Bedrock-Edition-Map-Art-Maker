@@ -44,6 +44,7 @@ public class Main extends Application
         this.b_ = new Button("Make Map");
         Button bx = new Button("Dither 1");
         Button by = new Button("Dither 2");
+        Button ba = new Button("Dither 4");
         Main.l_ = new Label("0%");
 
         Button[][] bb = new Button[8][8];
@@ -94,6 +95,7 @@ public class Main extends Application
         this.b_.setOnAction(e -> this.make());
         bx.setOnAction(e -> this.dither1());
         by.setOnAction(e -> this.dither2());
+        ba.setOnAction(e -> this.dither4());
     }
 
     public void init(boolean b)
@@ -780,5 +782,145 @@ public class Main extends Application
         }
 
         this.make();
+    }
+    
+    void dither4()
+    {
+        for (int y = 0; y < 128; y++)
+        {
+            for (int x = 0; x < 128; x++)
+            {
+                Main.mc[x][y] = new MapColor(Main.mc[x][y].r_, Main.mc[x][y].g_, Main.mc[x][y].b_, this.bool);
+                double rr = Main.mc[x][y].r_ - Main.mc[x][y].r;
+                double gg = Main.mc[x][y].g_ - Main.mc[x][y].g;
+                double bb = Main.mc[x][y].b_ - Main.mc[x][y].b;
+                double d;
+                
+                final double one = 0.125;
+                final double two = 0.25;
+
+                try
+                {
+                    Main.mc[x + 2][y].r_ = this.numChecker(Main.mc[x + 2][y].r_ + rr * one);
+                    Main.mc[x + 2][y].g_ = this.numChecker(Main.mc[x + 2][y].g_ + gg * one);
+                    Main.mc[x + 2][y].b_ = this.numChecker(Main.mc[x + 2][y].b_ + bb * one);
+                }
+                catch (Exception ignore) { }
+                
+                try
+                {
+                    Main.mc[x + 1][y].r_ = this.numChecker(Main.mc[x + 1][y].r_ + rr * two);
+                    Main.mc[x + 1][y].g_ = this.numChecker(Main.mc[x + 1][y].g_ + gg * two);
+                    Main.mc[x + 1][y].r_ = this.numChecker(Main.mc[x + 1][y].r_ + rr * two);
+                    d = Main.mc[x + 1][y].r_ + rr * two;
+
+                    if (d > 255) { Main.mc[x + 1][y].r_ = 255; }
+                    else if (d < 0) { Main.mc[x + 1][y].r_ = 0; }
+                    else { Main.mc[x + 1][y].r_ = d; }
+                    
+                    d = Main.mc[x + 1][y].g_ + gg * two;
+
+                    if (d > 255) { Main.mc[x + 1][y].g_ = 255; }
+                    else if (d < 0) { Main.mc[x + 1][y].g_ = 0; }
+                    else { Main.mc[x + 1][y].g_ = d; }
+                    
+                    d = Main.mc[x + 1][y].b_ + bb * two;
+
+                    if (d > 255) { Main.mc[x + 1][y].b_ = 255; }
+                    else if (d < 0) { Main.mc[x + 1][y].b_ = 0; }
+                    else { Main.mc[x + 1][y].b_ = d; }
+                    
+                    d = Main.mc[x + 1][y + 1].r_ + rr * one;
+
+                    if (d > 255) { Main.mc[x + 1][y + 1].r_ = 255; }
+                    else if (d < 0) { Main.mc[x + 1][y + 1].r_ = 0; }
+                    else { Main.mc[x + 1][y + 1].r_ = d; }
+                    
+                    d = Main.mc[x + 1][y + 1].g_ + gg * one;
+
+                    if (d > 255) { Main.mc[x + 1][y + 1].g_ = 255; }
+                    else if (d < 0) { Main.mc[x + 1][y + 1].g_ = 0; }
+                    else { Main.mc[x + 1][y + 1].g_ = d; }
+                    
+                    d = Main.mc[x + 1][y + 1].b_ + bb * one;
+
+                    if (d > 255) { Main.mc[x + 1][y + 1].b_ = 255; }
+                    else if (d < 0) { Main.mc[x + 1][y + 1].b_ = 0; }
+                    else { Main.mc[x + 1][y + 1].b_ = d; }
+                }
+                catch (Exception ignore) { }
+                
+                try
+                {
+                    d = Main.mc[x][y + 1].r_ + rr * two;
+
+                    if (d > 255) { Main.mc[x][y + 1].r_ = 255; }
+                    else if (d < 0) { Main.mc[x][y + 1].r_ = 0; }
+                    else { Main.mc[x][y + 1].r_ = d; }
+                    
+                    d = Main.mc[x][y + 1].g_ + gg * two;
+
+                    if (d > 255) { Main.mc[x][y + 1].g_ = 255; }
+                    else if (d < 0) { Main.mc[x][y + 1].g_ = 0; }
+                    else { Main.mc[x][y + 1].g_ = d; }
+                    
+                    d = Main.mc[x][y + 1].b_ + bb * two;
+
+                    if (d > 255) { Main.mc[x][y + 1].b_ = 255; }
+                    else if (d < 0) { Main.mc[x][y + 1].b_ = 0; }
+                    else { Main.mc[x][y + 1].b_ = d; }
+                    
+                    d = Main.mc[x][y + 2].r_ + rr * one;
+
+                    if (d > 255) { Main.mc[x][y + 2].r_ = 255; }
+                    else if (d < 0) { Main.mc[x][y + 2].r_ = 0; }
+                    else { Main.mc[x][y + 2].r_ = d; }
+                    
+                    d = Main.mc[x][y + 2].g_ + gg * one;
+
+                    if (d > 255) { Main.mc[x][y + 2].g_ = 255; }
+                    else if (d < 0) { Main.mc[x][y + 2].g_ = 0; }
+                    else { Main.mc[x][y + 2].g_ = d; }
+                    
+                    d = Main.mc[x][y + 2].b_ + bb * one;
+
+                    if (d > 255) { Main.mc[x][y + 2].b_ = 255; }
+                    else if (d < 0) { Main.mc[x][y + 2].b_ = 0; }
+                    else { Main.mc[x][y + 2].b_ = d; }
+                }
+                catch (Exception ignore) { }
+                
+                try
+                {
+                    d = Main.mc[x - 1][y + 1].r_ + rr * one;
+
+                    if (d > 255) { Main.mc[x - 1][y + 1].r_ = 255; }
+                    else if (d < 0) { Main.mc[x - 1][y + 1].r_ = 0; }
+                    else { Main.mc[x - 1][y + 1].r_ = d; }
+                    
+                    d = Main.mc[x - 1][y + 1].g_ + gg * one;
+
+                    if (d > 255) { Main.mc[x - 1][y + 1].g_ = 255; }
+                    else if (d < 0) { Main.mc[x - 1][y + 1].g_ = 0; }
+                    else { Main.mc[x - 1][y + 1].g_ = d; }
+                    
+                    d = Main.mc[x - 1][y + 1].b_ + bb * one;
+
+                    if (d > 255) { Main.mc[x - 1][y + 1].b_ = 255; }
+                    else if (d < 0) { Main.mc[x - 1][y + 1].b_ = 0; }
+                    else { Main.mc[x - 1][y + 1].b_ = d; }
+                }
+                catch (Exception ignore) { }
+            }
+        }
+        
+        this.make();
+    }
+    
+    double numChecker(double d)
+    {
+        if (d > 255) { return 255; }
+        else if (d < 0) { return 0; }
+        else { return d; }
     }
 }
