@@ -412,32 +412,52 @@ public final class Main extends Application
             for (int x = 0; x < 128; x++)
             {
                 Main.mc[x][y] = new MapColor(Main.mc[x][y].r_, Main.mc[x][y].g_, Main.mc[x][y].b_, this.bool);
-                double rr = Main.mc[x][y].r_ - Main.mc[x][y].r;
-                double gg = Main.mc[x][y].g_ - Main.mc[x][y].g;
-                double bb = Main.mc[x][y].b_ - Main.mc[x][y].b;
+                final double rr = Main.mc[x][y].r_ - Main.mc[x][y].r;
+                final double gg = Main.mc[x][y].g_ - Main.mc[x][y].g;
+                final double bb = Main.mc[x][y].b_ - Main.mc[x][y].b;
                 double d;
+                
+                double one = 1.0 / 16;
+                double three = 3.0 / 16;
+                double five = 5.0 / 16;
+                double seven = 7.0 / 16;
+                
+                if (x == 0)
+                {
+                    one = 1.0 / 13;
+                    five = 5.0 / 13;
+                    seven = 7.0 / 13;
+                }
+                
+                if (x == 0 && y == 127) { seven = 7.0 / 7; }
+                
+                if (x == 127)
+                {
+                    three = 3.0 / 8;
+                    five = 5.0 / 8;
+                }
 
                 try
                 {
-                    Main.mc[x + 1][y].r_ = this.numChecker(Main.mc[x + 1][y].r_ + rr * 0.4375);
-                    Main.mc[x + 1][y].g_ = this.numChecker(Main.mc[x + 1][y].g_ + gg * 0.4375);
-                    Main.mc[x + 1][y].b_ = this.numChecker(Main.mc[x + 1][y].b_ + bb * 0.4375);
+                    Main.mc[x + 1][y].r_ = this.numChecker(Main.mc[x + 1][y].r_ + rr * seven);
+                    Main.mc[x + 1][y].g_ = this.numChecker(Main.mc[x + 1][y].g_ + gg * seven);
+                    Main.mc[x + 1][y].b_ = this.numChecker(Main.mc[x + 1][y].b_ + bb * seven);
                     
-                    Main.mc[x + 1][y + 1].r_ = this.numChecker(Main.mc[x + 1][y + 1].r_ + rr * 0.0625);
-                    Main.mc[x + 1][y + 1].g_ = this.numChecker(Main.mc[x + 1][y + 1].g_ + gg * 0.0625);
-                    Main.mc[x + 1][y + 1].b_ = this.numChecker(Main.mc[x + 1][y + 1].b_ + bb * 0.0625);
+                    Main.mc[x + 1][y + 1].r_ = this.numChecker(Main.mc[x + 1][y + 1].r_ + rr * one);
+                    Main.mc[x + 1][y + 1].g_ = this.numChecker(Main.mc[x + 1][y + 1].g_ + gg * one);
+                    Main.mc[x + 1][y + 1].b_ = this.numChecker(Main.mc[x + 1][y + 1].b_ + bb * one);
                 }
                 catch (Exception ignore) { }
 
                 try
                 {
-                    Main.mc[x][y + 1].r_ = this.numChecker(Main.mc[x][y + 1].r_ + rr * 0.3125);
-                    Main.mc[x][y + 1].g_ = this.numChecker(Main.mc[x][y + 1].g_ + gg * 0.3125);
-                    Main.mc[x][y + 1].b_ = this.numChecker(Main.mc[x][y + 1].b_ + bb * 0.3125);
+                    Main.mc[x][y + 1].r_ = this.numChecker(Main.mc[x][y + 1].r_ + rr * five);
+                    Main.mc[x][y + 1].g_ = this.numChecker(Main.mc[x][y + 1].g_ + gg * five);
+                    Main.mc[x][y + 1].b_ = this.numChecker(Main.mc[x][y + 1].b_ + bb * five);
                     
-                    Main.mc[x - 1][y + 1].r_ = this.numChecker(Main.mc[x - 1][y + 1].r_ + rr * 0.1875);
-                    Main.mc[x - 1][y + 1].g_ = this.numChecker(Main.mc[x - 1][y + 1].g_ + gg * 0.1875);
-                    Main.mc[x - 1][y + 1].b_ = this.numChecker(Main.mc[x - 1][y + 1].b_ + bb * 0.1875);
+                    Main.mc[x - 1][y + 1].r_ = this.numChecker(Main.mc[x - 1][y + 1].r_ + rr * three);
+                    Main.mc[x - 1][y + 1].g_ = this.numChecker(Main.mc[x - 1][y + 1].g_ + gg * three);
+                    Main.mc[x - 1][y + 1].b_ = this.numChecker(Main.mc[x - 1][y + 1].b_ + bb * three);
                 }
                 catch (Exception ignore) { }
             }
@@ -453,9 +473,9 @@ public final class Main extends Application
             for (int x = 0; x < 128; x++)
             {
                 Main.mc[x][y] = new MapColor(Main.mc[x][y].r_, Main.mc[x][y].g_, Main.mc[x][y].b_, this.bool);
-                double rr = Main.mc[x][y].r_ - Main.mc[x][y].r;
-                double gg = Main.mc[x][y].g_ - Main.mc[x][y].g;
-                double bb = Main.mc[x][y].b_ - Main.mc[x][y].b;
+                final double rr = Main.mc[x][y].r_ - Main.mc[x][y].r;
+                final double gg = Main.mc[x][y].g_ - Main.mc[x][y].g;
+                final double bb = Main.mc[x][y].b_ - Main.mc[x][y].b;
                 double d;
 
                 final double one = 1.0 / 48;
@@ -539,9 +559,9 @@ public final class Main extends Application
             for (int x = 0; x < 128; x++)
             {
                 Main.mc[x][y] = new MapColor(Main.mc[x][y].r_, Main.mc[x][y].g_, Main.mc[x][y].b_, this.bool);
-                double rr = Main.mc[x][y].r_ - Main.mc[x][y].r;
-                double gg = Main.mc[x][y].g_ - Main.mc[x][y].g;
-                double bb = Main.mc[x][y].b_ - Main.mc[x][y].b;
+                final double rr = Main.mc[x][y].r_ - Main.mc[x][y].r;
+                final double gg = Main.mc[x][y].g_ - Main.mc[x][y].g;
+                final double bb = Main.mc[x][y].b_ - Main.mc[x][y].b;
                 double d;
                 
                 final double one = 0.125;
