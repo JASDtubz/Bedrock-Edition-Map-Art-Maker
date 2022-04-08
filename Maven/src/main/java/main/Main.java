@@ -11,8 +11,10 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToolBar;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -24,7 +26,6 @@ public final class Main extends Application
 
     Label l;
     TextField tf;
-    Button b0, b1, b_;
     public Canvas c = new Canvas(256, 256);
     Canvas c0 = new Canvas(256, 256);
     static Label l_ = new Label();
@@ -37,15 +38,29 @@ public final class Main extends Application
     @Override
     public void start(Stage s)
     {
+        Button map = new Button("Map");
+        Button find = new Button("Chunk Finder");
+        ToolBar tb = new ToolBar(map, find);
+        BorderPane bp = new BorderPane();
+        
+        bp.setTop(tb);
+        
         this.l = new Label("Location Of Image");
         this.tf = new TextField();
-        this.b0 = new Button("Start");
-        this.b1 = new Button("Start 2");
-        this.b_ = new Button("Make Map");
+        Button b0 = new Button("Start");
+        Button b1 = new Button("Start 2");
+        Button b_ = new Button("Make Map");
         Button bx = new Button("Dither 1");
         Button by = new Button("Dither 2");
         Button ba = new Button("Dither 4");
         Main.l_ = new Label("0%");
+        
+        b0.setOnAction(e -> this.init(false));
+        b1.setOnAction(e -> this.init(true));
+        b_.setOnAction(e -> this.make());
+        bx.setOnAction(e -> this.dither1());
+        by.setOnAction(e -> this.dither2());
+        ba.setOnAction(e -> this.dither4());
 
         Button[][] bb = new Button[8][8];
         VBox[] vbv = new VBox[8];
@@ -83,19 +98,14 @@ public final class Main extends Application
 
         this.vb = new VBox(5);
         this.vb.getChildren().addAll(this.l, this.tf, hb, canvas, Main.l_, button);
+        
+        bp.setCenter(this.vb);
 
         s.setTitle("Bedrock Map Art");
         s.getIcons().add(new Image("file:src/main/resources/loshun_upsized.png"));
         s.setOnCloseRequest(e -> System.exit(~0 >>> 1));
-        s.setScene(new Scene(this.vb, 800, 600));
+        s.setScene(new Scene(bp, 800, 600));
         s.show();
-
-        this.b0.setOnAction(e -> this.init(false));
-        this.b1.setOnAction(e -> this.init(true));
-        this.b_.setOnAction(e -> this.make());
-        bx.setOnAction(e -> this.dither1());
-        by.setOnAction(e -> this.dither2());
-        ba.setOnAction(e -> this.dither4());
     }
 
     private void init(boolean b)
