@@ -215,7 +215,7 @@ public class Main extends Application
                 
                 if (j == 0)
                 {
-                    if (v > 319) { z -= w - 316; }
+                    if (v > 319) { z -= v - 316; }
                     else if (w < -64) { z += -64 - w; }
                 }
             }
