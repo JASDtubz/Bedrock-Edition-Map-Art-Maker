@@ -206,15 +206,16 @@ public class Main extends Application
         {
             int z = 128;
             int w = 128;
+            int v = 128;
 
             for (int j = -127; j < 1; j++)
             {
                 if (Main.mc[i + 127][j + 127].name.contains("+")) { w -= 2; }
-                else if (Main.mc[i + 127][j + 127].name.contains("-")) { w += 2; }
-
+                else if (Main.mc[i + 127][j + 127].name.contains("-")) { v += 2; }
+                
                 if (j == 0)
                 {
-                    if (w > 319) { z -= w - 316; }
+                    if (v > 319) { z -= w - 316; }
                     else if (w < -64) { z += -64 - w; }
                 }
             }
