@@ -404,101 +404,43 @@ public class Main extends Application
         }
     }
 
-    public void dither1()
+    private void dither1()
     {
         for (int y = 0; y < 128; y++)
         {
             for (int x = 0; x < 128; x++)
             {
                 Main.mc[x][y] = new MapColor(Main.mc[x][y].r_, Main.mc[x][y].g_, Main.mc[x][y].b_, this.bool);
-                double rr = Main.mc[x][y].r_ - Main.mc[x][y].r;
-                double gg = Main.mc[x][y].g_ - Main.mc[x][y].g;
-                double bb = Main.mc[x][y].b_ - Main.mc[x][y].b;
-                double d;
+                final double rr = Main.mc[x][y].r_ - Main.mc[x][y].r;
+                final double gg = Main.mc[x][y].g_ - Main.mc[x][y].g;
+                final double bb = Main.mc[x][y].b_ - Main.mc[x][y].b;
+
+                double one = 1.0 / 16;
+                double three = 3.0 / 16;
+                double five = 5.0 / 16;
+                double seven = 7.0 / 16;
 
                 try
                 {
-                    d = Main.mc[x + 1][y].r_ + rr * 0.4375;
+                    Main.mc[x + 1][y].r_ = this.numChecker(Main.mc[x + 1][y].r_ + rr * seven);
+                    Main.mc[x + 1][y].g_ = this.numChecker(Main.mc[x + 1][y].g_ + gg * seven);
+                    Main.mc[x + 1][y].b_ = this.numChecker(Main.mc[x + 1][y].b_ + bb * seven);
 
-                    if (d > 255) { Main.mc[x + 1][y].r_ = 255; }
-                    else if (d < 0) { Main.mc[x + 1][y].r_ = 0; }
-                    else { Main.mc[x + 1][y].r_ = d; }
-
-                    d = Main.mc[x + 1][y].g_ + gg * 0.4375;
-
-                    if (d > 255) { Main.mc[x + 1][y].g_ = 255; }
-                    else if (d < 0) { Main.mc[x + 1][y].g_ = 0; }
-                    else { Main.mc[x + 1][y].g_ = d; }
-
-                    d = Main.mc[x + 1][y].b_ + bb * 0.4375;
-
-                    if (d > 255) { Main.mc[x + 1][y].b_ = 255; }
-                    else if (d < 0) { Main.mc[x + 1][y].b_ = 0; }
-                    else { Main.mc[x + 1][y].b_ = d; }
-
-                    //above is right : below is down right
-
-                    d = Main.mc[x + 1][y + 1].r_ + rr * 0.0625;
-
-                    if (d > 255) { Main.mc[x + 1][y + 1].r_ = 255; }
-                    else if (d < 0) { Main.mc[x + 1][y + 1].r_ = 0; }
-                    else { Main.mc[x + 1][y + 1].r_ = d; }
-
-                    d = Main.mc[x + 1][y + 1].g_ + gg * 0.0625;
-
-                    if (d > 255) { Main.mc[x + 1][y + 1].g_ = 255; }
-                    else if (d < 0) { Main.mc[x + 1][y + 1].g_ = 0; }
-                    else { Main.mc[x + 1][y + 1].g_ = d; }
-
-                    d = Main.mc[x + 1][y + 1].b_ + bb * 0.0625;
-
-                    if (d > 255) { Main.mc[x + 1][y + 1].b_ = 255; }
-                    else if (d < 0) { Main.mc[x + 1][y + 1].b_ = 0; }
-                    else { Main.mc[x + 1][y + 1].b_ = d; }
+                    Main.mc[x + 1][y + 1].r_ = this.numChecker(Main.mc[x + 1][y + 1].r_ + rr * one);
+                    Main.mc[x + 1][y + 1].g_ = this.numChecker(Main.mc[x + 1][y + 1].g_ + gg * one);
+                    Main.mc[x + 1][y + 1].b_ = this.numChecker(Main.mc[x + 1][y + 1].b_ + bb * one);
                 }
                 catch (Exception ignore) { }
 
-                //above is right stuff : below is down stuff
-
                 try
                 {
-                    d = Main.mc[x][y + 1].r_ + rr * 0.3125;
+                    Main.mc[x][y + 1].r_ = this.numChecker(Main.mc[x][y + 1].r_ + rr * five);
+                    Main.mc[x][y + 1].g_ = this.numChecker(Main.mc[x][y + 1].g_ + gg * five);
+                    Main.mc[x][y + 1].b_ = this.numChecker(Main.mc[x][y + 1].b_ + bb * five);
 
-                    if (d > 255) { Main.mc[x][y + 1].r_ = 255; }
-                    else if (d < 0) { Main.mc[x][y + 1].r_ = 0; }
-                    else { Main.mc[x][y + 1].r_ = d; }
-
-                    d = Main.mc[x][y + 1].g_ + gg * 0.3125;
-
-                    if (d > 255) { Main.mc[x][y + 1].g_ = 255; }
-                    else if (d < 0) { Main.mc[x][y + 1].g_ = 0; }
-                    else { Main.mc[x][y + 1].g_ = d; }
-
-                    d = Main.mc[x][y + 1].b_ + bb * 0.3125;
-
-                    if (d > 255) { Main.mc[x][y + 1].b_ = 255; }
-                    else if (d < 0) { Main.mc[x][y + 1].b_ = 0; }
-                    else { Main.mc[x][y + 1].b_ = d; }
-
-                    //above is down : below is down left
-
-                    d = Main.mc[x - 1][y + 1].r_ + rr * 0.1875;
-
-                    if (d > 255) { Main.mc[x - 1][y + 1].r_ = 255; }
-                    else if (d < 0) { Main.mc[x - 1][y + 1].r_ = 0; }
-                    else { Main.mc[x - 1][y + 1].r_ = d; }
-
-                    d = Main.mc[x - 1][y + 1].g_ + gg * 0.1875;
-
-                    if (d > 255) { Main.mc[x - 1][y + 1].g_ = 255; }
-                    else if (d < 0) { Main.mc[x - 1][y + 1].g_ = 0; }
-                    else { Main.mc[x - 1][y + 1].g_ = d; }
-
-                    d = Main.mc[x - 1][y + 1].b_ + bb * 0.1875;
-
-                    if (d > 255) { Main.mc[x - 1][y + 1].b_ = 255; }
-                    else if (d < 0) { Main.mc[x - 1][y + 1].b_ = 0; }
-                    else { Main.mc[x - 1][y + 1].b_ = d; }
+                    Main.mc[x - 1][y + 1].r_ = this.numChecker(Main.mc[x - 1][y + 1].r_ + rr * three);
+                    Main.mc[x - 1][y + 1].g_ = this.numChecker(Main.mc[x - 1][y + 1].g_ + gg * three);
+                    Main.mc[x - 1][y + 1].b_ = this.numChecker(Main.mc[x - 1][y + 1].b_ + bb * three);
                 }
                 catch (Exception ignore) { }
             }
@@ -507,17 +449,16 @@ public class Main extends Application
         this.make();
     }
 
-    public void dither2()
+    private void dither2()
     {
         for (int y = 0; y < 128; y++)
         {
             for (int x = 0; x < 128; x++)
             {
                 Main.mc[x][y] = new MapColor(Main.mc[x][y].r_, Main.mc[x][y].g_, Main.mc[x][y].b_, this.bool);
-                double rr = Main.mc[x][y].r_ - Main.mc[x][y].r;
-                double gg = Main.mc[x][y].g_ - Main.mc[x][y].g;
-                double bb = Main.mc[x][y].b_ - Main.mc[x][y].b;
-                double d;
+                final double rr = Main.mc[x][y].r_ - Main.mc[x][y].r;
+                final double gg = Main.mc[x][y].g_ - Main.mc[x][y].g;
+                final double bb = Main.mc[x][y].b_ - Main.mc[x][y].b;
 
                 final double one = 1.0 / 48;
                 final double three = 3.0 / 48;
@@ -526,255 +467,65 @@ public class Main extends Application
 
                 try
                 {
-                    d = Main.mc[x + 2][y].r_ + rr * five;
+                    Main.mc[x + 2][y].r_ = this.numChecker(Main.mc[x + 2][y].r_ + rr * five);
+                    Main.mc[x + 2][y].g_ = this.numChecker(Main.mc[x + 2][y].g_ + gg * five);
+                    Main.mc[x + 2][y].b_ = this.numChecker(Main.mc[x + 2][y].b_ + bb * five);
 
-                    if (d > 255) { Main.mc[x + 2][y].r_ = 255; }
-                    else if (d < 0) { Main.mc[x + 2][y].r_ = 0; }
-                    else { Main.mc[x + 2][y].r_ = d; }
+                    Main.mc[x + 2][y + 1].r_ = this.numChecker(Main.mc[x + 2][y + 1].r_ + rr * three);
+                    Main.mc[x + 2][y + 1].g_ = this.numChecker(Main.mc[x + 2][y + 1].g_ + gg * three);
+                    Main.mc[x + 2][y + 1].b_ = this.numChecker(Main.mc[x + 2][y + 1].b_ + bb * three);
 
-                    d = Main.mc[x + 2][y].g_ + gg * five;
-
-                    if (d > 255) { Main.mc[x + 2][y].g_ = 255; }
-                    else if (d < 0) { Main.mc[x + 2][y].g_ = 0; }
-                    else { Main.mc[x + 2][y].g_ = d; }
-
-                    d = Main.mc[x + 2][y].b_ + bb * five;
-
-                    if (d > 255) { Main.mc[x + 2][y].b_ = 255; }
-                    else if (d < 0) { Main.mc[x + 2][y].b_ = 0; }
-                    else { Main.mc[x + 2][y].b_ = d; }
-
-                    //above is right 2 : below is down right 2
-
-                    d = Main.mc[x + 2][y + 1].r_ + rr * three;
-
-                    if (d > 255) { Main.mc[x + 2][y + 1].r_ = 255; }
-                    else if (d < 0) { Main.mc[x + 2][y + 1].r_ = 0; }
-                    else { Main.mc[x + 2][y + 1].r_ = d; }
-
-                    d = Main.mc[x + 2][y + 1].g_ + gg * three;
-
-                    if (d > 255) { Main.mc[x + 2][y + 1].g_ = 255; }
-                    else if (d < 0) { Main.mc[x + 2][y + 1].g_ = 0; }
-                    else { Main.mc[x + 2][y + 1].g_ = d; }
-
-                    d = Main.mc[x + 2][y + 1].b_ + bb * three;
-
-                    if (d > 255) { Main.mc[x + 2][y + 1].b_ = 255; }
-                    else if (d < 0) { Main.mc[x + 2][y + 1].b_ = 0; }
-                    else { Main.mc[x + 2][y + 1].b_ = d; }
-
-                    //above is down right 2 : below is down 2 right 2
-
-                    d = Main.mc[x + 2][y + 2].r_ + rr * one;
-
-                    if (d > 255) { Main.mc[x + 2][y + 2].r_ = 255; }
-                    else if (d < 0) { Main.mc[x + 2][y + 2].r_ = 0; }
-                    else { Main.mc[x + 2][y + 2].r_ = d; }
-
-                    d = Main.mc[x + 2][y + 2].g_ + gg * one;
-
-                    if (d > 255) { Main.mc[x + 2][y + 2].g_ = 255; }
-                    else if (d < 0) { Main.mc[x + 2][y + 2].g_ = 0; }
-                    else { Main.mc[x + 2][y + 2].g_ = d; }
-
-                    d = Main.mc[x + 2][y + 2].b_ + bb * one;
-
-                    if (d > 255) { Main.mc[x + 2][y + 2].b_ = 255; }
-                    else if (d < 0) { Main.mc[x + 2][y + 2].b_ = 0; }
-                    else { Main.mc[x + 2][y + 2].b_ = d; }
+                    Main.mc[x + 2][y + 2].r_ = this.numChecker(Main.mc[x + 2][y + 2].r_ + rr * one);
+                    Main.mc[x + 2][y + 2].g_ = this.numChecker(Main.mc[x + 2][y + 2].g_ + gg * one);
+                    Main.mc[x + 2][y + 2].b_ = this.numChecker(Main.mc[x + 2][y + 2].b_ + bb * one);
                 }
                 catch (Exception ignore) { }
 
-                //above is right 2 stuff : below is right stuff
-
                 try
                 {
-                    d = Main.mc[x + 1][y].r_ + rr * seven;
+                    Main.mc[x + 1][y].r_ = this.numChecker(Main.mc[x + 1][y].r_ + rr * seven);
+                    Main.mc[x + 1][y].g_ = this.numChecker(Main.mc[x + 1][y].g_ + gg * seven);
+                    Main.mc[x + 1][y].b_ = this.numChecker(Main.mc[x + 1][y].b_ + bb * seven);
 
-                    if (d > 255) { Main.mc[x + 1][y].r_ = 255; }
-                    else if (d < 0) { Main.mc[x + 1][y].r_ = 0; }
-                    else { Main.mc[x + 1][y].r_ = d; }
+                    Main.mc[x + 1][y + 1].r_ = this.numChecker(Main.mc[x + 1][y + 1].r_ + rr * five);
+                    Main.mc[x + 1][y + 1].g_ = this.numChecker(Main.mc[x + 1][y + 1].g_ + gg * five);
+                    Main.mc[x + 1][y + 1].b_ = this.numChecker(Main.mc[x + 1][y + 1].b_ + bb * five);
 
-                    d = Main.mc[x + 1][y].g_ + gg * seven;
-
-                    if (d > 255) { Main.mc[x + 1][y].g_ = 255; }
-                    else if (d < 0) { Main.mc[x + 1][y].g_ = 0; }
-                    else { Main.mc[x + 1][y].g_ = d; }
-
-                    d = Main.mc[x + 1][y].b_ + bb * seven;
-
-                    if (d > 255) { Main.mc[x + 1][y].b_ = 255; }
-                    else if (d < 0) { Main.mc[x + 1][y].b_ = 0; }
-                    else { Main.mc[x + 1][y].b_ = d; }
-
-                    //above right : below down right
-
-                    d = Main.mc[x + 1][y + 1].r_ + rr * five;
-
-                    if (d > 255) { Main.mc[x + 1][y + 1].r_ = 255; }
-                    else if (d < 0) { Main.mc[x + 1][y + 1].r_ = 0; }
-                    else { Main.mc[x + 1][y + 1].r_ = d; }
-
-                    d = Main.mc[x + 1][y + 1].g_ + gg * five;
-
-                    if (d > 255) { Main.mc[x + 1][y + 1].g_ = 255; }
-                    else if (d < 0) { Main.mc[x + 1][y + 1].g_ = 0; }
-                    else { Main.mc[x + 1][y + 1].g_ = d; }
-
-                    d = Main.mc[x + 1][y + 1].b_ + bb * five;
-
-                    if (d > 255) { Main.mc[x + 1][y + 1].b_ = 255; }
-                    else if (d < 0) { Main.mc[x + 1][y + 1].b_ = 0; }
-                    else { Main.mc[x + 1][y + 1].b_ = d; }
-
-                    //above down right : below down 2 right
-
-                    d = Main.mc[x + 1][y + 2].r_ + rr * three;
-
-                    if (d > 255) { Main.mc[x + 1][y + 2].r_ = 255; }
-                    else if (d < 0) { Main.mc[x + 1][y + 2].r_ = 0; }
-                    else { Main.mc[x + 1][y + 2].r_ = d; }
-
-                    d = Main.mc[x + 1][y + 2].g_ + gg * three;
-
-                    if (d > 255) { Main.mc[x + 1][y + 2].g_ = 255; }
-                    else if (d < 0) { Main.mc[x + 1][y + 2].g_ = 0; }
-                    else { Main.mc[x + 1][y + 2].g_ = d; }
-
-                    d = Main.mc[x + 1][y + 2].b_ + bb * three;
-
-                    if (d > 255) { Main.mc[x + 1][y + 2].b_ = 255; }
-                    else if (d < 0) { Main.mc[x + 1][y + 2].b_ = 0; }
-                    else { Main.mc[x + 1][y + 2].b_ = d; }
+                    Main.mc[x + 1][y + 2].r_ = this.numChecker(Main.mc[x + 1][y + 2].r_ + rr * three);
+                    Main.mc[x + 1][y + 2].g_ = this.numChecker(Main.mc[x + 1][y + 2].g_ + gg * three);
+                    Main.mc[x + 1][y + 2].b_ = this.numChecker(Main.mc[x + 1][y + 2].b_ + bb * three);
                 }
                 catch (Exception ignore) { }
 
-                //above is right stuff : below is down stuff
-
                 try
                 {
-                    d = Main.mc[x][y + 1].r_ + rr * seven;
+                    Main.mc[x][y + 1].r_ = this.numChecker(Main.mc[x][y + 1].r_ + rr * seven);
+                    Main.mc[x][y + 1].g_ = this.numChecker(Main.mc[x][y + 1].g_ + gg * seven);
+                    Main.mc[x][y + 1].b_ = this.numChecker(Main.mc[x][y + 1].b_ + bb * seven);
 
-                    if (d > 255) { Main.mc[x][y + 1].r_ = 255; }
-                    else if (d < 0) { Main.mc[x][y + 1].r_ = 0; }
-                    else { Main.mc[x][y + 1].r_ = d; }
+                    Main.mc[x - 1][y + 1].r_ = this.numChecker(Main.mc[x - 1][y + 1].r_ + rr * five);
+                    Main.mc[x - 1][y + 1].g_ = this.numChecker(Main.mc[x - 1][y + 1].g_ + gg * five);
+                    Main.mc[x - 1][y + 1].b_ = this.numChecker(Main.mc[x - 1][y + 1].b_ + bb * five);
 
-                    d = Main.mc[x][y + 1].g_ + gg * seven;
-
-                    if (d > 255) { Main.mc[x][y + 1].g_ = 255; }
-                    else if (d < 0) { Main.mc[x][y + 1].g_ = 0; }
-                    else { Main.mc[x][y + 1].g_ = d; }
-
-                    d = Main.mc[x][y + 1].b_ + bb * seven;
-
-                    if (d > 255) { Main.mc[x][y + 1].b_ = 255; }
-                    else if (d < 0) { Main.mc[x][y + 1].b_ = 0; }
-                    else { Main.mc[x][y + 1].b_ = d; }
-
-                    //above is down : below is down left
-
-                    d = Main.mc[x - 1][y + 1].r_ + rr * five;
-
-                    if (d > 255) { Main.mc[x - 1][y + 1].r_ = 255; }
-                    else if (d < 0) { Main.mc[x - 1][y + 1].r_ = 0; }
-                    else { Main.mc[x - 1][y + 1].r_ = d; }
-
-                    d = Main.mc[x - 1][y + 1].g_ + gg * five;
-
-                    if (d > 255) { Main.mc[x - 1][y + 1].g_ = 255; }
-                    else if (d < 0) { Main.mc[x - 1][y + 1].g_ = 0; }
-                    else { Main.mc[x - 1][y + 1].g_ = d; }
-
-                    d = Main.mc[x - 1][y + 1].b_ + bb * five;
-
-                    if (d > 255) { Main.mc[x - 1][y + 1].b_ = 255; }
-                    else if (d < 0) { Main.mc[x - 1][y + 1].b_ = 0; }
-                    else { Main.mc[x - 1][y + 1].b_ = d; }
-
-                    //above is down left : below is down left 2
-
-                    d = Main.mc[x - 2][y + 1].r_ + rr * three;
-
-                    if (d > 255) { Main.mc[x - 2][y + 1].r_ = 255; }
-                    else if (d < 0) { Main.mc[x - 2][y + 1].r_ = 0; }
-                    else { Main.mc[x - 2][y + 1].r_ = d; }
-
-                    d = Main.mc[x - 2][y + 1].g_ + gg * three;
-
-                    if (d > 255) { Main.mc[x - 2][y + 1].g_ = 255; }
-                    else if (d < 0) { Main.mc[x - 2][y + 1].g_ = 0; }
-                    else { Main.mc[x - 2][y + 1].g_ = d; }
-
-                    d = Main.mc[x - 2][y + 1].b_ + bb * three;
-
-                    if (d > 255) { Main.mc[x - 2][y + 1].b_ = 255; }
-                    else if (d < 0) { Main.mc[x - 2][y + 1].b_ = 0; }
-                    else { Main.mc[x - 2][y + 1].b_ = d; }
+                    Main.mc[x - 2][y + 1].r_ = this.numChecker(Main.mc[x - 2][y + 1].r_ + rr * three);
+                    Main.mc[x - 2][y + 1].g_ = this.numChecker(Main.mc[x - 2][y + 1].g_ + gg * three);
+                    Main.mc[x - 2][y + 1].b_ = this.numChecker(Main.mc[x - 2][y + 1].b_ + bb * three);
                 }
                 catch (Exception ignore) { }
 
-                //above is down stuff : below is down 2 stuff
-
                 try
                 {
-                    d = Main.mc[x][y + 2].r_ + rr * five;
+                    Main.mc[x][y + 2].r_ = this.numChecker(Main.mc[x][y + 2].r_ + rr * five);
+                    Main.mc[x][y + 2].g_ = this.numChecker(Main.mc[x][y + 2].g_ + gg * five);
+                    Main.mc[x][y + 2].b_ = this.numChecker(Main.mc[x][y + 2].b_ + bb * five);
 
-                    if (d > 255) { Main.mc[x][y + 2].r_ = 255; }
-                    else if (d < 0) { Main.mc[x][y + 2].r_ = 0; }
-                    else { Main.mc[x][y + 2].r_ = d; }
+                    Main.mc[x - 1][y + 2].r_ = this.numChecker(Main.mc[x - 1][y + 2].r_ + rr * three);
+                    Main.mc[x - 1][y + 2].g_ = this.numChecker(Main.mc[x - 1][y + 2].g_ + gg * three);
+                    Main.mc[x - 1][y + 2].b_ = this.numChecker(Main.mc[x - 1][y + 2].b_ + bb * three);
 
-                    d = Main.mc[x][y + 2].g_ + gg * five;
-
-                    if (d > 255) { Main.mc[x][y + 2].g_ = 255; }
-                    else if (d < 0) { Main.mc[x][y + 2].g_ = 0; }
-                    else { Main.mc[x][y + 2].g_ = d; }
-
-                    d = Main.mc[x][y + 2].b_ + bb * five;
-
-                    if (d > 255) { Main.mc[x][y + 2].b_ = 255; }
-                    else if (d < 0) { Main.mc[x][y + 2].b_ = 0; }
-                    else { Main.mc[x][y + 2].b_ = d; }
-
-                    //above is down 2 : below is down 2 left
-
-                    d = Main.mc[x - 1][y + 2].r_ + rr * three;
-
-                    if (d > 255) { Main.mc[x - 1][y + 2].r_ = 255; }
-                    else if (d < 0) { Main.mc[x - 1][y + 2].r_ = 0; }
-                    else { Main.mc[x - 1][y + 2].r_ = d; }
-
-                    d = Main.mc[x - 1][y + 2].g_ + gg * three;
-
-                    if (d > 255) { Main.mc[x - 1][y + 2].g_ = 255; }
-                    else if (d < 0) { Main.mc[x - 1][y + 2].g_ = 0; }
-                    else { Main.mc[x - 1][y + 2].g_ = d; }
-
-                    d = Main.mc[x - 1][y + 2].b_ + bb * three;
-
-                    if (d > 255) { Main.mc[x - 1][y + 2].b_ = 255; }
-                    else if (d < 0) { Main.mc[x - 1][y + 2].b_ = 0; }
-                    else { Main.mc[x - 1][y + 2].b_ = d; }
-
-                    //above is down 2 left : below is down 2 left 2
-
-                    d = Main.mc[x - 2][y + 2].r_ + rr * one;
-
-                    if (d > 255) { Main.mc[x - 2][y + 2].r_ = 255; }
-                    else if (d < 0) { Main.mc[x - 2][y + 2].r_ = 0; }
-                    else { Main.mc[x - 2][y + 2].r_ = d; }
-
-                    d = Main.mc[x - 2][y + 2].g_ + gg * one;
-
-                    if (d > 255) { Main.mc[x - 2][y + 2].g_ = 255; }
-                    else if (d < 0) { Main.mc[x - 2][y + 2].g_ = 0; }
-                    else { Main.mc[x - 2][y + 2].g_ = d; }
-
-                    d = Main.mc[x - 2][y + 2].b_ + bb * one;
-
-                    if (d > 255) { Main.mc[x - 2][y + 2].b_ = 255; }
-                    else if (d < 0) { Main.mc[x - 2][y + 2].b_ = 0; }
-                    else { Main.mc[x - 2][y + 2].b_ = d; }
+                    Main.mc[x - 2][y + 2].r_ = this.numChecker(Main.mc[x - 2][y + 2].r_ + rr * one);
+                    Main.mc[x - 2][y + 2].g_ = this.numChecker(Main.mc[x - 2][y + 2].g_ + gg * one);
+                    Main.mc[x - 2][y + 2].b_ = this.numChecker(Main.mc[x - 2][y + 2].b_ + bb * one);
                 }
                 catch (Exception ignore) { }
             }
@@ -782,4 +533,11 @@ public class Main extends Application
 
         this.make();
     }
+    
+    private double numChecker(double d)
+    {
+        if (d > 255) { return 255; }
+        else if (d < 0) { return 0; }
+        else { return d; }
+    }    
 }
