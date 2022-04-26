@@ -40,4 +40,4 @@ Join discord [link](https://discord.gg/MuHPVWFRsk) for help and to suggest more 
 - Fixed blocks.txt and is now displaying correctly.
 - Replaced "fill" command with "setblock" command.
 - Rows will adjust themselves to fit the build height in the function commands.
-- Added Dripleaf becuase they were forgotten.
+- Added Dripleaf because they were forgotten.
