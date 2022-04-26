@@ -1,3 +1,9 @@
+/*
+    Copyright Loshun Ltd. 2022
+    Updated Tuesday, April 26
+    Version 2.0.4
+*/
+
 package main;
 
 import java.io.File;
