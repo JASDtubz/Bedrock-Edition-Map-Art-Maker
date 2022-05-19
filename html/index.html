@@ -1,7 +1,7 @@
 <!--
     Copyright Loshun Ltd. 2022
-    Updated Tuesday, May 17
-    Version 0.0 -->
+    Updated Thursday, May 19
+    Version 0.1 -->
 <!DOCTYPE html>
 <html
     lang="en"
@@ -31,5 +31,35 @@
     </script>
   </head>
   <body>
+    <div>
+      <h3>
+          Map Chunk Finder
+      </h3>
+      <p>
+          Input your X Coordinate and Z Coordinate within the map area.
+      </p>
+      <label>
+          X Coord: 
+      </label>
+      <input
+          id="x"
+          type="text">
+      </input>
+      <br/>
+      <label>
+          Z Coord: 
+      </label>
+      <input
+          id="z"
+          type="text">
+      </input>
+      <button
+          onclick="findChunk()"
+          type="button">
+      </button>
+      <p
+          id="result">
+      </p>
+    </div>
   </body>
 </html>
