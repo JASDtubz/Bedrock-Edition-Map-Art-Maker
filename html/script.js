@@ -1,7 +1,7 @@
 /*
     Copyright Loshun Ltd. 2022
     Updated Thursday, May 19
-    Version 0.3
+    Version 0.4
 */
 
 function findChunk()
@@ -9,7 +9,7 @@ function findChunk()
     let x = parseInt(document.getElementById("x").textContent);
     let z = parseInt(document.getElementById("z").textContent);
     
-    if (x === NaN || z === NaN) { return; }
+    if (isNaN(x) || isNaN(z)) { return; }
     
     let x0 = (x / 16) * 16;
     let x1 = x0 + 127;
