@@ -1,7 +1,7 @@
 /*
     Copyright Loshun Ltd. 2022
     Updated Thursday, May 19
-    Version 0.1
+    Version 0.2
 */
 
 function findChunk()
@@ -11,9 +11,9 @@ function findChunk()
     
     if (x === NaN || z === NaN) { return; }
     
-    let x0 = x / 16 * 16;
+    let x0 = (x / 16) * 16;
     let x1 = x0 + 127;
-    let z0 = z / 16 * 16;
+    let z0 = (z / 16) * 16;
     let z1 = z0 + 127;
     
     document.getElementById("result").textContent =
