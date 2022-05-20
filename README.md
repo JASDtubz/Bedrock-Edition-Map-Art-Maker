@@ -1,3 +1,5 @@
+[//]: <> comment?
+
 # Bedrock-Edition-Map-Art-Maker
 For making map art in Minecraft Bedrock Edition
 
@@ -6,6 +8,8 @@ Run program using a javafx ide and then type the image location into the text bo
 Do not copy this repository because nothing will happen. I did not create any dependencies and files that can help run the program quickly. Instead copy the java classes individually and to the right spots. (You need to know how JavaFX works in order to do this)
 
 Join discord [link](https://discord.gg/MuHPVWFRsk) for help and to suggest more features!
+
+There is also a browser version which is still in progress of being made at this [link](https://jasdtubz.github.io/Bedrock-Edition-Map-Art-Maker/html/).
 
 ## Version 0
 ### November 6, 2021
