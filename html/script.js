@@ -1,7 +1,7 @@
 /*
     Copyright Loshun Ltd. 2022
     Updated Friday, May 20
-    Version 0.11
+    Version 0.12
 */
 
 function findChunk()
@@ -13,9 +13,18 @@ function findChunk()
     {
         document.getElementById("nw").textContent = "X value is invalid.";
         document.getElementById("ne").textContent = "Z value is invalid.";
+        return;
     }
-    else if (isNaN(x)) { document.getElementById("nw").textContent = "X value is invalid."; }
-    else if (isNaN(z)) { document.getElementById("nw").textContent = "Z value is invalid."; }
+    else if (isNaN(x))
+    {
+        document.getElementById("nw").textContent = "X value is invalid.";
+        return;
+    }
+    else if (isNaN(z))
+    {
+        document.getElementById("nw").textContent = "Z value is invalid.";
+        return;
+    }
     
     let x0 = Math.floor(x / 128) * 128 - 64;
     let x1 = x0 + 127;
