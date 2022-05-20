@@ -1,4 +1,8 @@
-[//]: <> (comment?)
+<!--
+    Copyright Loshun Ltd. 2022
+    Updated Friday, May 20
+    Version 1.0
+-->
 
 # Bedrock-Edition-Map-Art-Maker
 For making map art in Minecraft Bedrock Edition
