@@ -1,7 +1,7 @@
 /*
     Copyright Loshun Ltd. 2022
     Updated Friday, May 20
-    Version 0.9
+    Version 0.10
 */
 
 function findChunk()
@@ -11,9 +11,9 @@ function findChunk()
     
     if (isNaN(x) || isNaN(z)) { return; }
     
-    let x0 = (x / 16) * 16;
+    let x0 = Math.floor(x / 128) * 128 - 64;
     let x1 = x0 + 127;
-    let z0 = (z / 16) * 16;
+    let z0 = Math.floor(z / 128) * 128 - 64;
     let z1 = z0 + 127;
     
     document.getElementById("nw").textContent = "Northwest: ( " + x0 + " , " + z0 + " )";
