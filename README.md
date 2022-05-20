@@ -1,4 +1,4 @@
-[//]: <> comment?
+[//]: <> (comment?)
 
 # Bedrock-Edition-Map-Art-Maker
 For making map art in Minecraft Bedrock Edition
