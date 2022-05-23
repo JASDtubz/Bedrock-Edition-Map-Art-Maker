@@ -1,7 +1,7 @@
 /*
     Copyright Loshun Ltd. 2022
     Updated Friday, May 20
-    Version 0.13
+    Version 0.14
 */
 
 function findChunk()
@@ -34,9 +34,9 @@ function findChunk()
         return;
     }
     
-    let x0 = Math.floor(x / 128) * 128 - 64;
+    let x0 = Math.round(x / 128) * 128 - 64;
     let x1 = x0 + 127;
-    let z0 = Math.floor(z / 128) * 128 - 64;
+    let z0 = Math.round(z / 128) * 128 - 64;
     let z1 = z0 + 127;
     
     document.getElementById("nw").textContent = "Northwest: ( " + x0 + " , " + z0 + " )";
