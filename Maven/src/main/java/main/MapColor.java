@@ -1,7 +1,7 @@
 /*
     Copyright Loshun Ltd. 2022
-    Updated Tuesday, April 26
-    Version 1.0.0
+    Updated Tuesday, May 31
+    Version 1.1.0
 */
 
 package main;
@@ -12,9 +12,11 @@ public class MapColor
     public double r_, g_, b_;
     public final String name;
 
+    @Version(lastEdited = 1.1)
+    @Deprecated(since = "1.1", forRemoval = true) //lol this is not how to use deprecation
     public MapColor(double r, double g, double b, boolean b_)
     {
-        final MapColor[] mc = this.getColors(b_);
+        final MapColor[] mc = MapColor.getColors(b_);
 
         double i;
         double i_ = 256;
@@ -41,6 +43,34 @@ public class MapColor
         this.b_ = b;
     }
 
+    @Version(addedIn = 1.1, lastEdited = 1.1)
+    public MapColor(double r, double g, double b, MapColor[] mc)
+    {
+        double i;
+        double i_ = 256;
+        int ii = 0;
+
+        for (var x = 0; x < mc.length; x++)
+        {
+            i = Math.sqrt(Math.pow(r - mc[x].r, 2) + Math.pow(g - mc[x].g, 2) + Math.pow(b - mc[x].b, 2));
+
+            if (i < i_)
+            {
+                i_ = i;
+                ii = x;
+            }
+        }
+
+        this.name = mc[ii].name;
+        this.r = mc[ii].r;
+        this.g = mc[ii].g;
+        this.b = mc[ii].b;
+        this.r_ = r;
+        this.g_ = g;
+        this.b_ = b;
+    }
+
+    @Version
     private MapColor(String name, int r, int g, int b)
     {
         this.name = name;
@@ -49,7 +79,19 @@ public class MapColor
         this.b = b;
     }
 
-    private MapColor[] getColors(boolean bool)
+    @Version(addedIn = 1.1, lastEdited = 1.1)
+    public static String[] getNames()
+    {
+        MapColor[] mc = MapColor.getColors(false);
+        String[] s = new String[mc.length];
+
+        for (int i = 0; i < mc.length; i++) { s[i] = mc[i].name; }
+
+        return s;
+    }
+
+    @Version(lastEdited = 1.1)
+    public static MapColor[] getColors(boolean bool)
     {
         final MapColor fire = new MapColor("Fire", 217, 0, 0);
         final MapColor red = new MapColor("Red / Nether Wart", 130, 43, 43);
@@ -66,9 +108,9 @@ public class MapColor
         final MapColor sand = new MapColor("Sand / End Stone", 209, 198, 138);
         final MapColor lime = new MapColor("Lime", 106, 171, 20);
         final MapColor green = new MapColor("Green / Moss / Kelp", 86, 106, 43);
-        /*final MapColor grass = new MapColor("Grass", 122, 158, 73);*/
+        final MapColor grass = new MapColor("Grass", 122, 158, 73);
         final MapColor emerald = new MapColor("Emerald", 0, 182, 49);
-        /*final MapColor leaves = new MapColor("Leaves", 54, 78, 21);*/
+        final MapColor leaves = new MapColor("Leaves", 54, 78, 21);
         final MapColor hydrogen = new MapColor("Hydrogen", 102, 150, 57);
         final MapColor slime = new MapColor("Slime", 108, 151, 47);
         final MapColor dripleaf = new MapColor("Dripleaf", 0, 102, 0);
@@ -130,9 +172,9 @@ public class MapColor
         final MapColor sand0 = new MapColor(sand.name + "-", 244, 230, 161);
         final MapColor lime0 = new MapColor(lime.name + "-", 126, 202, 25);
         final MapColor green0 = new MapColor(green.name + "-", 101, 126, 50);
-        /*final MapColor grass0 = new MapColor(grass.name + "-", 144, 186, 87);*/
+        final MapColor grass0 = new MapColor(grass.name + "-", 144, 186, 87);
         final MapColor emerald0 = new MapColor(emerald.name + "-", 0, 214, 57);
-        /*final MapColor leaves0 = new MapColor(leaves.name + "-", 62, 91, 24);*/
+        final MapColor leaves0 = new MapColor(leaves.name + "-", 62, 91, 24);
         final MapColor hydrogen0 = new MapColor(hydrogen.name + "-", 121, 176, 67);
         final MapColor slime0 = new MapColor(slime.name + "-", 126, 176, 55);
         final MapColor dripleaf0 = new MapColor(dripleaf.name + "-", 0, 123, 0);
@@ -192,9 +234,9 @@ public class MapColor
         final MapColor sand1 = new MapColor(sand.name + "+", 172, 162, 114);
         final MapColor lime1 = new MapColor(lime.name + "+", 88, 142, 17);
         final MapColor green1 = new MapColor(green.name + "+", 71, 88, 36);
-        /*final MapColor grass1 = new MapColor(grass.name + "+", 102, 130, 61);*/
+        final MapColor grass1 = new MapColor(grass.name + "+", 102, 130, 61);
         final MapColor emerald1 = new MapColor(emerald.name + "+", 0, 151, 40);
-        /*final MapColor leaves1 = new MapColor(leaves.name + "+", 44, 63, 17);*/
+        final MapColor leaves1 = new MapColor(leaves.name + "+", 44, 63, 17);
         final MapColor hydrogen1 = new MapColor(hydrogen.name + "+", 85, 125, 47);
         final MapColor slime1 = new MapColor(slime.name + "+", 88, 124, 39);
         final MapColor dripleaf1 = new MapColor(dripleaf.name + "+", 0, 86, 0);
@@ -239,12 +281,16 @@ public class MapColor
         final MapColor lichen1 = new MapColor(lichen.name + "+", 88, 116, 104);
         final MapColor sprucePlanks1 = new MapColor(sprucePlanks.name + "+", 90, 59, 34);
 
+        //This is here due to easier math
+        final MapColor unknown0 = new MapColor(unknown.name + "+", 0, 0, 0);
+        final MapColor unknown1 = new MapColor(unknown.name + "-", 0, 0, 0);
+
         if (!bool)
         {
             return new MapColor[]
             {
                 fire, red, netherrack, pink, crimsonNylium, boron, lanthanum, crimsonPlanks, orange, fluorine, yellow,
-                gold, sand, lime, green, /*grass,*/ emerald, /*leaves,*/ hydrogen, slime, dripleaf, lightBlue, cyan, blue,
+                gold, sand, lime, green, grass, emerald, leaves, hydrogen, slime, dripleaf, lightBlue, cyan, blue,
                 darkPrismarine, lapisLazuli, warpedWart, warpedNylium, ice, lithium, beryllium, weatheredCopper,
                 magenta, purple, helium, actinium, black, unknown, sculkSensor, gray, lightGray, iron, stone, scandium,
                 stoneBricks, /*basalt,*/ deepslate, white, quartz, cobweb, calcite, brown, planks, dirt, aluminum,
@@ -257,24 +303,72 @@ public class MapColor
             {
                 fire0, fire1, red0, red1, netherrack0, netherrack1, pink0, pink1, crimsonNylium0, crimsonNylium1,
                 boron0, boron1, lanthanum0, lanthanum1, crimsonPlanks0, crimsonPlanks1, orange0, orange1, fluorine0,
-                fluorine1, yellow0, yellow1, gold0, gold1, sand0, sand1, lime0, lime1, green0, green1, /*grass0, grass1,*/
-                emerald0, emerald1, /*leaves0, leaves1,*/ hydrogen0, hydrogen1, slime0, slime1, dripleaf0, dripleaf1,
+                fluorine1, yellow0, yellow1, gold0, gold1, sand0, sand1, lime0, lime1, green0, green1, grass0, grass1,
+                emerald0, emerald1, leaves0, leaves1, hydrogen0, hydrogen1, slime0, slime1, dripleaf0, dripleaf1,
                 lightBlue0, lightBlue1, cyan0, cyan1, blue0, blue1, darkPrismarine0, darkPrismarine1, lapisLazuli0,
                 lapisLazuli1, warpedWart0, warpedWart1, warpedNylium0, warpedNylium1, ice0, ice1, lithium0, lithium1,
                 beryllium0, beryllium1, weatheredCopper0, weatheredCopper1, magenta0, magenta1, purple0, purple1,
-                helium0, helium1, actinium0, actinium1, black0, black1, sculkSensor0, sculkSensor1, gray0, gray1,
-                lightGray0, lightGray1, iron0, iron1, stone0, stone1, scandium0, scandium1, stoneBricks0, stoneBricks1,
-                deepslate0, deepslate1, white0, white1, quartz0, quartz1, cobweb0, cobweb1, calcite0, calcite1, brown0,
-                brown1, planks0, planks1, dirt0, dirt1, aluminum0, aluminum1, exposedCopper0, exposedCopper1, rawIron0,
-                rawIron1, tuff0, tuff1, dripstone0, dripstone1, spruceLeaves0, spruceLeaves1, birchLeaves0,
-                birchLeaves1, lichen0, lichen1, sprucePlanks0, sprucePlanks1, fire, red, netherrack, pink,
+                helium0, helium1, actinium0, actinium1, black0, black1, unknown0, unknown1, sculkSensor0, sculkSensor1,
+                gray0, gray1, lightGray0, lightGray1, iron0, iron1, stone0, stone1, scandium0, scandium1, stoneBricks0,
+                stoneBricks1, deepslate0, deepslate1, white0, white1, quartz0, quartz1, cobweb0, cobweb1, calcite0,
+                calcite1, brown0, brown1, planks0, planks1, dirt0, dirt1, aluminum0, aluminum1, exposedCopper0,
+                exposedCopper1, rawIron0, rawIron1, tuff0, tuff1, dripstone0, dripstone1, spruceLeaves0, spruceLeaves1,
+                birchLeaves0, birchLeaves1, lichen0, lichen1, sprucePlanks0, sprucePlanks1, fire, red, netherrack, pink,
                 crimsonNylium, boron, lanthanum, crimsonPlanks, orange, fluorine, yellow, gold, sand, lime, green,
-                /*grass,*/ emerald, /*leaves,*/ hydrogen, slime, dripleaf, lightBlue, cyan, blue, darkPrismarine,
-                lapisLazuli, warpedWart, warpedNylium, ice, lithium, beryllium, weatheredCopper, magenta, purple,
-                helium, actinium, black, unknown, sculkSensor, gray, lightGray, iron, stone, scandium, stoneBricks,
-                /*basalt,*/ deepslate, white, quartz, cobweb, calcite, brown, planks, dirt, aluminum, exposedCopper,
-                rawIron, tuff, dripstone, spruceLeaves, birchLeaves, lichen, sprucePlanks
+                grass, emerald, leaves, hydrogen, slime, dripleaf, lightBlue, cyan, blue, darkPrismarine, lapisLazuli,
+                warpedWart, warpedNylium, ice, lithium, beryllium, weatheredCopper, magenta, purple, helium, actinium,
+                black, unknown, sculkSensor, gray, lightGray, iron, stone, scandium, stoneBricks, /*basalt,*/ deepslate,
+                white, quartz, cobweb, calcite, brown, planks, dirt, aluminum, exposedCopper, rawIron, tuff, dripstone,
+                spruceLeaves, birchLeaves, lichen, sprucePlanks
             };
         }
+    }
+
+    @Version(addedIn = 1.1, lastEdited = 1.1)
+    public static MapColor[] filter(MapColor[] mc, boolean[] b)
+    {
+        int n = 0;
+
+        if (mc.length < 63)
+        {
+            for (int i = 0; i < b.length; i++)
+            {
+                if (!b[i])
+                {
+                    MapColor[] mcc = new MapColor[mc.length - 1];
+
+                    System.arraycopy(mc, 0, mcc, 0, i - n);
+                    System.arraycopy(mc, i + 1 - n, mcc, i - n, mc.length - i - 1 + n);
+                    mc = mcc;
+
+                    n++;
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < b.length; i++)
+            {
+                if (!b[i])
+                {
+                    MapColor[] mcc = new MapColor[mc.length - 3];
+                    int k = 0;
+
+                    for (int j = 0; j < mc.length; j++)
+                    {
+                        if (!(j == 2 * (i - n) || j == 2 * (i - n) + 1 || j == mc.length * 2 / 3 + i - n))
+                        {
+                            mcc[k] = mc[j];
+                            k++;
+                        }
+                    }
+
+                    mc = mcc;
+                    n++;
+                }
+            }
+        }
+
+        return mc;
     }
 }
