@@ -1,7 +1,7 @@
 <!--
     Copyright Loshun Ltd. 2022
     Updated Friday, May 20
-    Version 1.1.1
+    Version 1.1.2
 -->
 
 # Bedrock-Edition-Map-Art-Maker
@@ -59,5 +59,5 @@ Note that all version notes are to the JavaFX version.
   - This algorithm was not supposed to be added, but I kept it in anyways.
 - Added a Version annotation and should be ignored.
 - Entire code rewrite soon.
-- Browser version on its way.
+- Browser version is on its way.
   - Added a program to find map chunks as a placeholder and for the full version.
