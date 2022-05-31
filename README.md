@@ -1,7 +1,7 @@
 <!--
     Copyright Loshun Ltd. 2022
     Updated Friday, May 20
-    Version 1.1.0
+    Version 1.1.1
 -->
 
 # Bedrock-Edition-Map-Art-Maker
@@ -54,7 +54,7 @@ Note that all version notes are to the JavaFX version.
 
 ## Version 1.1
 ### May 31, 2022
-- Added a block palete.
+- Added a block selection list.
 - Added a third dithering algorithm
   - This algorithm was not supposed to be added, but I kept it in anyways.
 - Added a Version annotation and should be ignored.
