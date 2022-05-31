@@ -1,7 +1,7 @@
 <!--
     Copyright Loshun Ltd. 2022
     Updated Friday, May 20
-    Version 1.0
+    Version 1.0.0
 -->
 
 # Bedrock-Edition-Map-Art-Maker
@@ -14,6 +14,8 @@ Do not copy this repository because nothing will happen. I did not create any de
 Join discord [link](https://discord.gg/MuHPVWFRsk) for help and to suggest more features!
 
 There is also a browser version which is still in progress of being made at this [link](https://jasdtubz.github.io/Bedrock-Edition-Map-Art-Maker/html/).
+
+Note that all version notes are to the JavaFX version.
 
 ## Version 0
 ### November 6, 2021
