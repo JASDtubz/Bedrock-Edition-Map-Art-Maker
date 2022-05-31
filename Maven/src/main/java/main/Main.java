@@ -1,32 +1,35 @@
 /*
     Copyright Loshun Ltd. 2022
-    Updated Tuesday, April 26
+    Updated Tuesday, May 31
     Version 1.0.4
 */
 
 package main;
 
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileWriter;
-import java.io.IOException;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class Main extends Application
 {
     boolean bool;
+    static int i = 0;
 
     Label l;
     TextField tf;
@@ -35,11 +38,18 @@ public class Main extends Application
     Canvas c0 = new Canvas(256, 256);
     static Label l_ = new Label();
     VBox vb;
+    boolean[] b = new boolean[62];
 
     public static MapColor[][] mc = new MapColor[128][128];
+    MapColor[] mcl = new MapColor[0];
 
-    public static void main(String[] q) { Application.launch(); }
+    @Version(required = true)
+    public Main() { }
 
+    @Version(required = true)
+    public static void main(String[] q) { launch(); }
+
+    @Version(required = true, lastEdited = 1.1)
     @Override
     public void start(Stage s)
     {
@@ -50,6 +60,7 @@ public class Main extends Application
         this.b_ = new Button("Make Map");
         Button bx = new Button("Dither 1");
         Button by = new Button("Dither 2");
+        Button bz = new Button("Dither 3");
         Main.l_ = new Label("0%");
 
         Button[][] bb = new Button[8][8];
@@ -61,7 +72,7 @@ public class Main extends Application
         this.b1.setTooltip(new Tooltip("This algorithm uses stair technique."));
 
         HBox hb = new HBox(5);
-        hb.getChildren().addAll(this.b0, this.b1, this.b_, bx, by);
+        hb.getChildren().addAll(this.b0, this.b1, this.b_, bx, by, bz);
 
         for (int i = 0; i < 8; i++)
         {
@@ -86,8 +97,16 @@ public class Main extends Application
         Button button = new Button("Function");
         button.setOnAction(q -> this.function());
 
+        Button button1 = new Button("Block List");
+        button1.setOnAction(q -> this.blockList());
+
+        HBox buttons = new HBox(5);
+        buttons.getChildren().addAll(button, button1);
+
+        java.util.Arrays.fill(this.b, true);
+
         this.vb = new VBox(5);
-        this.vb.getChildren().addAll(this.l, this.tf, hb, canvas, Main.l_, button);
+        this.vb.getChildren().addAll(this.l, this.tf, hb, canvas, Main.l_, buttons);
 
         s.setTitle("Bedrock Map Art");
         s.getIcons().add(new Image("file:src/main/resources/loshun_upsized.png"));
@@ -100,8 +119,10 @@ public class Main extends Application
         this.b_.setOnAction(e -> this.make());
         bx.setOnAction(e -> this.dither1());
         by.setOnAction(e -> this.dither2());
+        bz.setOnAction(e -> this.dither3());
     }
 
+    @Version(lastEdited = 1.1)
     public void init(boolean b)
     {
         String s;
@@ -115,33 +136,49 @@ public class Main extends Application
             return;
         }
 
+        this.mcl = MapColor.filter(MapColor.getColors(this.bool), this.b);
+
         Main.l_.setText("0%");
 
-        Init i = new Init();
-        i.init(s, b);
+        new Init().init(s, this.mcl);
     }
 
+    @Version(lastEdited = 1.1)
     public void make()
     {
         GraphicsContext gc = this.c.getGraphicsContext2D();
+
+        BufferedImage bf = new BufferedImage(256, 256, BufferedImage.TYPE_INT_RGB);
+        Graphics2D g2d = bf.createGraphics();
 
         for (int x = 0; x < 128; x++)
         {
             for (int y = 0; y < 128; y++)
             {
                 MapColor mc = Main.mc[x][y];
-                gc.setFill(Color.rgb(mc.r, mc.g, mc.b));
+                gc.setFill(javafx.scene.paint.Color.rgb(mc.r, mc.g, mc.b));
                 gc.fillRect(x * 2, y * 2, 2, 2);
+
+//                g2d.setColor(new java.awt.Color(mc.r, mc.g, mc.b, 255));
+//                g2d.fillRect(x * 2, y * 2, 2, 2);
             }
         }
+
+//        g2d.dispose();
+//        try { javax.imageio.ImageIO.write(bf, "png", new File(Main.i + ".png")); }
+//        catch (Exception ignore) { System.out.println("What the Fuck?"); }
+
+        Main.i++;
     }
 
+    @Version
     public static void assign(int x, int y, MapColor mc)
     {
         Main.mc[x][y] = mc;
         Main.l_.setText(x / 127.0 * 100 + "%");
     }
 
+    @Version(lastEdited = 1.0)
     public void chunk(int x, int y)
     {
         if (Main.mc[0][0] != null)
@@ -154,15 +191,15 @@ public class Main extends Application
                 for (int j = y * 16; j < (y + 1) * 16; j++)
                 {
                     MapColor mc = Main.mc[i][j];
-                    gc.setFill(Color.rgb(mc.r, mc.g, mc.b));
+                    gc.setFill(javafx.scene.paint.Color.rgb(mc.r, mc.g, mc.b));
                     gc.fillRect(i % 16 * 16, j % 16 * 16, 16, 16);
                 }
             }
-            
+
             for (int i = y * 16; i < (y + 1) * 16; i++)
             {
                 for (int j = x * 16; j < (x + 1) * 16; j++) { sb.append(Main.mc[j][i].name).append(" | "); }
-                
+
                 sb.append("\n");
             }
 
@@ -176,9 +213,9 @@ public class Main extends Application
                 fw.write(sb.toString());
                 fw.close();
             }
-            catch (IOException ignored) { return; }
+            catch (Exception ignored) { return; }
 
-            gc.setFill(Color.BLACK);
+            gc.setFill(javafx.scene.paint.Color.BLACK);
 
             for (int i = 1; i < 16; i++)
             {
@@ -186,7 +223,7 @@ public class Main extends Application
                 gc.fillRect(0, i * 16 - 1, 256, 3);
             }
 
-            gc.setFill(Color.WHITE);
+            gc.setFill(javafx.scene.paint.Color.WHITE);
 
             for (int i = 1; i < 16; i++)
             {
@@ -196,6 +233,7 @@ public class Main extends Application
         }
     }
 
+    @Version(addedIn = 1, lastEdited = 1.0)
     void function()
     {
         StringBuilder sb = new StringBuilder();
@@ -218,7 +256,7 @@ public class Main extends Application
             {
                 if (Main.mc[i + 127][j + 127].name.contains("+")) { w -= 2; }
                 else if (Main.mc[i + 127][j + 127].name.contains("-")) { v += 2; }
-                
+
                 if (j == 0)
                 {
                     if (v > 319) { z -= v - 316; }
@@ -335,11 +373,12 @@ public class Main extends Application
             fw2.write(sb2.toString());
             fw2.close();
         }
-        catch (IOException ignored) { }
+        catch (Exception ignored) { }
 
         System.out.println("done");
     }
 
+    @Version(addedIn = 1, lastEdited = 1.0)
     String translate(String s)
     {
         switch (s)
@@ -410,13 +449,14 @@ public class Main extends Application
         }
     }
 
+    @Version(addedIn = 1, lastEdited = 1.0)
     private void dither1()
     {
         for (int y = 0; y < 128; y++)
         {
             for (int x = 0; x < 128; x++)
             {
-                Main.mc[x][y] = new MapColor(Main.mc[x][y].r_, Main.mc[x][y].g_, Main.mc[x][y].b_, this.bool);
+                Main.mc[x][y] = new MapColor(Main.mc[x][y].r_, Main.mc[x][y].g_, Main.mc[x][y].b_, this.mcl);
                 final double rr = Main.mc[x][y].r_ - Main.mc[x][y].r;
                 final double gg = Main.mc[x][y].g_ - Main.mc[x][y].g;
                 final double bb = Main.mc[x][y].b_ - Main.mc[x][y].b;
@@ -425,6 +465,21 @@ public class Main extends Application
                 double three = 3.0 / 16;
                 double five = 5.0 / 16;
                 double seven = 7.0 / 16;
+
+//                if (x == 0)
+//                {
+//                    one = 1.0 / 13;
+//                    five = 5.0 / 13;
+//                    seven = 7.0 / 13;
+//                }
+//
+//                if (x == 0 && y == 127) { seven = 7.0 / 7; }
+//
+//                if (x == 127)
+//                {
+//                    three = 3.0 / 8;
+//                    five = 5.0 / 8;
+//                }
 
                 try
                 {
@@ -455,13 +510,14 @@ public class Main extends Application
         this.make();
     }
 
+    @Version(addedIn = 1, lastEdited = 1.0)
     private void dither2()
     {
         for (int y = 0; y < 128; y++)
         {
             for (int x = 0; x < 128; x++)
             {
-                Main.mc[x][y] = new MapColor(Main.mc[x][y].r_, Main.mc[x][y].g_, Main.mc[x][y].b_, this.bool);
+                Main.mc[x][y] = new MapColor(Main.mc[x][y].r_, Main.mc[x][y].g_, Main.mc[x][y].b_, this.mcl);
                 final double rr = Main.mc[x][y].r_ - Main.mc[x][y].r;
                 final double gg = Main.mc[x][y].g_ - Main.mc[x][y].g;
                 final double bb = Main.mc[x][y].b_ - Main.mc[x][y].b;
@@ -539,11 +595,102 @@ public class Main extends Application
 
         this.make();
     }
-    
+
+    @Version(addedIn = 1.1, lastEdited = 1.1)
+    void dither3()
+    {
+        for (int y = 0; y < 128; y++)
+        {
+            for (int x = 0; x < 128; x++)
+            {
+                Main.mc[x][y] = new MapColor(Main.mc[x][y].r_, Main.mc[x][y].g_, Main.mc[x][y].b_, this.mcl);
+                double rr = Main.mc[x][y].r_ - Main.mc[x][y].r;
+                double gg = Main.mc[x][y].g_ - Main.mc[x][y].g;
+                double bb = Main.mc[x][y].b_ - Main.mc[x][y].b;
+                double d;
+
+                try
+                {
+                    d = Main.mc[x + 1][y].r_ + rr * 0.5;
+
+                    if (d > 255) { Main.mc[x + 1][y].r_ = 255; }
+                    else if (d < 0) { Main.mc[x + 1][y].r_ = 0; }
+                    else { Main.mc[x + 1][y].r_ = d; }
+
+                    d = Main.mc[x + 1][y].g_ + gg * 0.5;
+
+                    if (d > 255) { Main.mc[x + 1][y].g_ = 255; }
+                    else if (d < 0) { Main.mc[x + 1][y].g_ = 0; }
+                    else { Main.mc[x + 1][y].g_ = d; }
+
+                    d = Main.mc[x + 1][y].b_ + bb * 0.5;
+
+                    if (d > 255) { Main.mc[x + 1][y].b_ = 255; }
+                    else if (d < 0) { Main.mc[x + 1][y].b_ = 0; }
+                    else { Main.mc[x + 1][y].b_ = d; }
+                }
+                catch (Exception ignore) { }
+
+                try
+                {
+                    d = Main.mc[x][y + 1].r_ + rr * 0.5;
+
+                    if (d > 255) { Main.mc[x][y + 1].r_ = 255; }
+                    else if (d < 0) { Main.mc[x][y + 1].r_ = 0; }
+                    else { Main.mc[x][y + 1].r_ = d; }
+
+                    d = Main.mc[x][y + 1].g_ + gg * 0.5;
+
+                    if (d > 255) { Main.mc[x][y + 1].g_ = 255; }
+                    else if (d < 0) { Main.mc[x][y + 1].g_ = 0; }
+                    else { Main.mc[x][y + 1].g_ = d; }
+
+                    d = Main.mc[x][y + 1].b_ + bb * 0.5;
+
+                    if (d > 255) { Main.mc[x][y + 1].b_ = 255; }
+                    else if (d < 0) { Main.mc[x][y + 1].b_ = 0; }
+                    else { Main.mc[x][y + 1].b_ = d; }
+                }
+                catch (Exception ignore) { }
+            }
+        }
+
+        this.make();
+    }
+
+    @Version(addedIn = 1.0, lastEdited = 1.0)
     private double numChecker(double d)
     {
         if (d > 255) { return 255; }
         else if (d < 0) { return 0; }
         else { return d; }
-    }    
+    }
+
+    @Version(addedIn = 1.1, lastEdited = 1.1)
+    void blockList()
+    {
+        String[] s = MapColor.getNames();
+        CheckBox[] cb = new CheckBox[s.length];
+
+        for (int i = 0; i < s.length; i++)
+        {
+            final int j = i;
+
+            cb[i] = new CheckBox(s[i]);
+            cb[i].setSelected(this.b[i]);
+            cb[i].setOnAction(q -> this.b[j] = !this.b[j]);
+        }
+
+        VBox vb = new VBox(10);
+        vb.getChildren().addAll(cb);
+
+        ScrollPane sp = new ScrollPane();
+        sp.setContent(vb);
+
+        Stage stage = new Stage(javafx.stage.StageStyle.UTILITY);
+        stage.setTitle("Block Selection");
+        stage.getIcons().add(new Image("file:src/main/resources/loshun_upsized.png"));
+        stage.setScene(new Scene(sp, 400, 600));
+        stage.show();
+    }
 }
