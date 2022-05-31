@@ -1,7 +1,7 @@
 <!--
     Copyright Loshun Ltd. 2022
     Updated Friday, May 20
-    Version 1.0.1
+    Version 1.1.0
 -->
 
 # Bedrock-Edition-Map-Art-Maker
@@ -51,3 +51,13 @@ Note that all version notes are to the JavaFX version.
 - Replaced "fill" command with "setblock" command.
 - Rows will adjust themselves to fit the build height in the function commands.
 - Added Dripleaf because they were forgotten.
+
+## Version 1.1
+### May 31, 2022
+- Added a block palete.
+- Added a third dithering algorithm
+  - This algorithm was not supposed to be added, but I kept it in anyways.
+- Added a Version annotation and should be ignored.
+- Entire code rewrite soon.
+- Browser version on its way.
+  - Added a program to find map chunks as a placeholder and for the full version.
