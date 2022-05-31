@@ -1,7 +1,7 @@
 /*
     Copyright Loshun Ltd. 2022
     Updated Tuesday, May 31
-    Version 1.0.0
+    Version 1.1.0
 */
 
 package main;
