@@ -1,7 +1,7 @@
 <!--
     Copyright Loshun Ltd. 2022
     Updated Friday, May 20
-    Version 1.0.0
+    Version 1.0.1
 -->
 
 # Bedrock-Edition-Map-Art-Maker
@@ -11,7 +11,7 @@ Run program using a javafx ide and then type the image location into the text bo
 
 Do not copy this repository because nothing will happen. I did not create any dependencies and files that can help run the program quickly. Instead copy the java classes individually and to the right spots. (You need to know how JavaFX works in order to do this)
 
-Join discord [link](https://discord.gg/MuHPVWFRsk) for help and to suggest more features!
+Join discord [link](https://discord.gg/Pv6agYuc4C) for help and to suggest more features!
 
 There is also a browser version which is still in progress of being made at this [link](https://jasdtubz.github.io/Bedrock-Edition-Map-Art-Maker/html/).
 
