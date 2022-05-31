@@ -1,6 +1,6 @@
 /*
     Copyright Loshun Ltd. 2022
-    Updated Tuesday, April 26
+    Updated Tuesday, May 31
     Version 1.0.0
 */
 
@@ -14,10 +14,12 @@ import java.io.IOException;
 
 public class Init
 {
-    public void init(String s, boolean b0)
-    {
-        Main m = new Main();
+    @Version(required = true)
+    public Init() { }
 
+    @Version(lastEdited = 1.1)
+    public void init(String s, MapColor[] mcc)
+    {
         int h, w;
         double d;
         double d_;
@@ -114,7 +116,7 @@ public class Init
                 int x_ = (int) Math.ceil(x / d_);
                 int y_ = (int) Math.ceil(y / d);
 
-                MapColor mc = new MapColor(ra, ga, ba, b0);
+                MapColor mc = new MapColor(ra, ga, ba, mcc);
 
                 Main.assign(x_, y_, mc);
                 System.out.println(x_ + " " + y_ + " " + mc.name);
