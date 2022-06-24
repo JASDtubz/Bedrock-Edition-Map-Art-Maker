@@ -1,7 +1,7 @@
 /*
     Copyright Loshun Ltd. 2022
     Updated Tuesday, May 31
-    Version 1.1.0
+    Version 1.2.0
 */
 
 package main;
@@ -54,7 +54,7 @@ public class MapColor
         {
             i = Math.sqrt(Math.pow(r - mc[x].r, 2) + Math.pow(g - mc[x].g, 2) + Math.pow(b - mc[x].b, 2));
 
-            if (i < i_)
+            if (i <= i_)
             {
                 i_ = i;
                 ii = x;
@@ -156,6 +156,7 @@ public class MapColor
         final MapColor birchLeaves = new MapColor("Birch Leaves", 58, 76, 39);
         final MapColor lichen = new MapColor("Glow Lichen", 108, 142, 127);
         final MapColor sprucePlanks = new MapColor("Spruce Planks", 110, 73, 42);
+        final MapColor mud = new MapColor("Mud", 78, 78, 78);
 
         final MapColor fire0 = new MapColor(fire.name + "-", 252, 0, 0);
         final MapColor red0 = new MapColor(red.name + "-", 151, 50, 50);
@@ -218,6 +219,7 @@ public class MapColor
         final MapColor birchLeaves0 = new MapColor(birchLeaves.name + "-", 68, 89, 45);
         final MapColor lichen0 = new MapColor(lichen.name + "-", 126, 165, 148);
         final MapColor sprucePlanks0 = new MapColor(sprucePlanks.name + "-", 127, 85, 48);
+        final MapColor mud0 = new MapColor(mud.name + "-", 86, 91, 91);
 
         final MapColor fire1 = new MapColor(fire.name + "+", 178, 0, 0);
         final MapColor red1 = new MapColor(red.name + "+", 107, 36, 36);
@@ -280,6 +282,7 @@ public class MapColor
         final MapColor birchLeaves1 = new MapColor(birchLeaves.name + "+", 47, 62, 32);
         final MapColor lichen1 = new MapColor(lichen.name + "+", 88, 116, 104);
         final MapColor sprucePlanks1 = new MapColor(sprucePlanks.name + "+", 90, 59, 34);
+        final MapColor mud1 = new MapColor(mud.name + "+", 60, 63, 63);
 
         //This is here due to easier math
         final MapColor unknown0 = new MapColor(unknown.name + "+", 0, 0, 0);
@@ -294,7 +297,7 @@ public class MapColor
                 darkPrismarine, lapisLazuli, warpedWart, warpedNylium, ice, lithium, beryllium, weatheredCopper,
                 magenta, purple, helium, actinium, black, unknown, sculkSensor, gray, lightGray, iron, stone, scandium,
                 stoneBricks, /*basalt,*/ deepslate, white, quartz, cobweb, calcite, brown, planks, dirt, aluminum,
-                exposedCopper, rawIron, tuff, dripstone, spruceLeaves, birchLeaves, lichen, sprucePlanks
+                exposedCopper, rawIron, tuff, dripstone, spruceLeaves, birchLeaves, lichen, sprucePlanks, mud
             };
         }
         else
@@ -313,13 +316,13 @@ public class MapColor
                 stoneBricks1, deepslate0, deepslate1, white0, white1, quartz0, quartz1, cobweb0, cobweb1, calcite0,
                 calcite1, brown0, brown1, planks0, planks1, dirt0, dirt1, aluminum0, aluminum1, exposedCopper0,
                 exposedCopper1, rawIron0, rawIron1, tuff0, tuff1, dripstone0, dripstone1, spruceLeaves0, spruceLeaves1,
-                birchLeaves0, birchLeaves1, lichen0, lichen1, sprucePlanks0, sprucePlanks1, fire, red, netherrack, pink,
-                crimsonNylium, boron, lanthanum, crimsonPlanks, orange, fluorine, yellow, gold, sand, lime, green,
-                grass, emerald, leaves, hydrogen, slime, dripleaf, lightBlue, cyan, blue, darkPrismarine, lapisLazuli,
-                warpedWart, warpedNylium, ice, lithium, beryllium, weatheredCopper, magenta, purple, helium, actinium,
-                black, unknown, sculkSensor, gray, lightGray, iron, stone, scandium, stoneBricks, /*basalt,*/ deepslate,
-                white, quartz, cobweb, calcite, brown, planks, dirt, aluminum, exposedCopper, rawIron, tuff, dripstone,
-                spruceLeaves, birchLeaves, lichen, sprucePlanks
+                birchLeaves0, birchLeaves1, lichen0, lichen1, sprucePlanks0, sprucePlanks1, mud0, mud1,
+                fire, red, netherrack, pink, crimsonNylium, boron, lanthanum, crimsonPlanks, orange, fluorine, yellow,
+                gold, sand, lime, green, grass, emerald, leaves, hydrogen, slime, dripleaf, lightBlue, cyan, blue,
+                darkPrismarine, lapisLazuli, warpedWart, warpedNylium, ice, lithium, beryllium, weatheredCopper,
+                magenta, purple, helium, actinium, black, unknown, sculkSensor, gray, lightGray, iron, stone, scandium,
+                stoneBricks, /*basalt,*/ deepslate, white, quartz, cobweb, calcite, brown, planks, dirt, aluminum,
+                exposedCopper, rawIron, tuff, dripstone, spruceLeaves, birchLeaves, lichen, sprucePlanks, mud
             };
         }
     }
