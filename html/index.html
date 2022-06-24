@@ -1,7 +1,7 @@
 <!--
     Copyright Loshun Ltd. 2022
     Updated Friday, May 20
-    Version -1.0.5 -->
+    Version -1.0.6 -->
 <!DOCTYPE html>
 <html
     lang="en"
@@ -35,45 +35,54 @@
   </head>
   <body>
     <div>
-      <h3>
-          Map Chunk Finder
-      </h3>
-      <p>
-          Input your X Coordinate and Z Coordinate within the map area.
-      </p>
-      <label>
-          X Coord: 
-      </label>
-      <input
-          id="x"
-          type="text">
-      </input>
-      <br/>
-      <label>
-          Z Coord: 
-      </label>
-      <input
-          id="z"
-          type="text">
-      </input>
-      <br/>
-      <button
-          onclick="findChunk()"
-          type="button">
-          Find
-      </button>
-      <p
-          id="nw">
-      </p>
-      <p
-          id="ne">
-      <p/>
-      <p
-          id="sw">
-      </p>
-      <p
-          id="se">
-      </p>
+      <div
+          id="instructions">
+      </div>
+      <div
+          id="chunkFinder">
+        <h3>
+            Map Chunk Finder
+        </h3>
+        <p>
+            Input your X Coordinate and Z Coordinate within the map area.
+        </p>
+        <label>
+            X Coord: 
+        </label>
+        <input
+            id="x"
+            type="text">
+        </input>
+        <br/>
+        <label>
+            Z Coord: 
+        </label>
+        <input
+            id="z"
+            type="text">
+        </input>
+        <br/>
+        <button
+            onclick="findChunk()"
+            type="button">
+            Find
+        </button>
+        <p
+            id="nw">
+        </p>
+        <p
+            id="ne">
+        <p/>
+        <p
+            id="sw">
+        </p>
+        <p
+            id="se">
+        </p>
+      </div>
+      <div
+          id="file">
+      </div>
     </div>
   </body>
 </html>
