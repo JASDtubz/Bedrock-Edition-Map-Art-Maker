@@ -1,7 +1,7 @@
 /*
     Copyright Loshun Ltd. 2022
     Updated Tuesday, May 31
-    Version 1.1.0
+    Version 1.2.0
 */
 
 package main;
@@ -38,7 +38,7 @@ public class Main extends Application
     Canvas c0 = new Canvas(256, 256);
     static Label l_ = new Label();
     VBox vb;
-    boolean[] b = new boolean[62];
+    boolean[] b = new boolean[63];
 
     public static MapColor[][] mc = new MapColor[128][128];
     MapColor[] mcl = new MapColor[0];
@@ -350,8 +350,8 @@ public class Main extends Application
                     n++;
                 }
 
-                if (z > 319) { System.out.println("greater"); }
-                else if (z < -60) { System.out.println("less"); }
+                if (z > 319) { System.err.println("greater"); }
+                else if (z < -64) { System.err.println("less"); }
             }
         }
 
