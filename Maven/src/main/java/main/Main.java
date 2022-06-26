@@ -1,7 +1,7 @@
 /*
     Copyright Loshun Ltd. 2022
     Updated Tuesday, May 31
-    Version 1.2.0
+    Version 1.2.1
 */
 
 package main;
@@ -445,6 +445,7 @@ public class Main extends Application
             case "Glow Lichen": return "glow_lichen";
             case "Spruce Planks": return "planks 1";
             case "Dripleaf": return "big_dripleaf";
+            case "Mud": return "mud";
             default: return "air";
         }
     }
