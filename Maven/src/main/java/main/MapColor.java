@@ -1,7 +1,7 @@
 /*
     Copyright Loshun Ltd. 2022
     Updated Tuesday, May 31
-    Version 1.2.0
+    Version 1.2.1
 */
 
 package main;
@@ -93,15 +93,15 @@ public class MapColor
     @Version(lastEdited = 1.1)
     public static MapColor[] getColors(boolean bool)
     {
-        final MapColor fire = new MapColor("Fire", 217, 0, 0);
-        final MapColor red = new MapColor("Red / Nether Wart", 130, 43, 43);
-        final MapColor netherrack = new MapColor("Netherrack", 92, 1, 0);
-        final MapColor pink = new MapColor("Pink", 200, 105, 136);
-        final MapColor crimsonNylium = new MapColor("Crimson Nylium", 143, 26, 26);
-        final MapColor boron = new MapColor("Boron", 154, 111, 109);
-        final MapColor lanthanum = new MapColor("Lanthanum", 200, 132, 189);
-        final MapColor crimsonPlanks = new MapColor("Crimson Planks", 125, 53, 82);
-        final MapColor orange = new MapColor("Orange / Terracotta / Copper", 183, 107, 43);
+        final MapColor fire = new MapColor("Fire", 217, 0, 0),
+            red = new MapColor("Red / Nether Wart", 130, 43, 43),
+            netherrack = new MapColor("Netherrack", 92, 1, 0),
+            pink = new MapColor("Pink", 200, 105, 136),
+            crimsonNylium = new MapColor("Crimson Nylium", 143, 26, 26),
+            boron = new MapColor("Boron", 154, 111, 109),
+            lanthanum = new MapColor("Lanthanum", 200, 132, 189),
+            crimsonPlanks = new MapColor("Crimson Planks", 125, 53, 82),
+            orange = new MapColor("Orange / Terracotta / Copper", 183, 107, 43);
         final MapColor fluorine = new MapColor("Fluorine", 210, 167, 70);
         final MapColor yellow = new MapColor("Yellow / Hay", 192, 192, 43);
         final MapColor gold = new MapColor("Gold", 212, 202, 65);
